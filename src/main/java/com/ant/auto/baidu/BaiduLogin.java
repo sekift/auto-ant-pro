@@ -8,18 +8,21 @@ import org.slf4j.LoggerFactory;
 
 import com.ant.auto.util.SleepUtil;
 
+/**
+ * 百度登录
+ * @author sekift
+ *
+ */
 public class BaiduLogin {
 	private static final Logger logger = LoggerFactory
 			.getLogger(BaiduLogin.class);
 
-	// 直接登录
 	private static final String baiduLoginUrl = "https://wappass.baidu.com/passport/?"
 			+ "login&tpl=wimn&ssid%3D0%26amp%3B"
 			+ "from%3D844b%26amp%3Buid%3D%26amp%3Bpu%3Dsz%25401320_2001%252Cta%2540"
 			+ "iphone_1_10.0_3_602%26amp%3Bbd_page_type%3D1&tn=&regtype=1"
 			+ "&u=https%3A%2F%2Fm.baidu.com";
 
-	// 百度登录
 	public static WebDriver baiduLogin(String username, String password,
 			WebDriver driver) {
 		//driver.manage().window().setSize(new Dimension(700, 800));

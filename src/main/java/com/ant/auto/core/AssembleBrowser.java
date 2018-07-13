@@ -20,7 +20,7 @@ import com.ant.auto.Constants;
 /**
  * 装配浏览器
  * 
- * @author Administrator
+ * @author sekift
  * 
  */
 public class AssembleBrowser {

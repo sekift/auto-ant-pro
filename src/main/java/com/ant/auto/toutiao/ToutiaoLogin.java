@@ -13,6 +13,11 @@ import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.SleepUtil;
 
+/**
+ * 头条登录
+ * @author sekift
+ *
+ */
 public class ToutiaoLogin {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ToutiaoLogin.class);

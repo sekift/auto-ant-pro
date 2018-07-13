@@ -6,6 +6,11 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.ant.auto.util.SleepUtil;
 
+/**
+ * 发微博
+ * @author sekift
+ *
+ */
 public class WeiboSend {
 	public static void sendTweet(String username, String password, WebDriver driverDis) {
 		WebDriver driver = WeiboLogin.weiboLogin(username, password, driverDis);

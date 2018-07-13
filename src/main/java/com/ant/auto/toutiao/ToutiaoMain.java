@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ant.auto.Constants;
-import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.core.AssembleProperties;
 import com.ant.auto.util.SleepUtil;
 
@@ -30,7 +30,7 @@ public class ToutiaoMain {
 		List<Map<String, String>> targetList = AssembleProperties.loadProString(
 				Constants.TOUTIAO_TARGET_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
-			driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
+			driver = AssembleBrowserFactory.getBrower();
 			//尺寸不能缩小，要不看不见
 			driver = ToutiaoLogin.ttLogin(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver, type);

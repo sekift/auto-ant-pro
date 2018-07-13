@@ -3,14 +3,13 @@ package com.ant.auto.tianya;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.ant.auto.Constants;
-import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SendMessageTool;
 import com.ant.auto.util.SleepUtil;
 
 public class TianyaRegisterTest {
 	public static void main(String[] args) {
-		WebDriver driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
+		WebDriver driver = AssembleBrowserFactory.getBrower();
 
 		String baseUrl = "https://passport.tianya.cn";
 		driver.get(baseUrl
@@ -37,7 +36,7 @@ public class TianyaRegisterTest {
 		driver.findElement(By.id("get_mobile_vcode")).click();
 		SleepUtil.sleepBySecond(3, 6);
 		driver.findElement(By.id("mobile")).clear();
-		driver.findElement(By.id("mobile")).sendKeys("18688483843");
+		driver.findElement(By.id("mobile")).sendKeys("1868843");
 		driver.findElement(By.id("get_mobile_vcode")).click();
 		//SleepUtil.sleepBySecond(6, 12);
 		//driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();

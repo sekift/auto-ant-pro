@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.Constants;
 import com.ant.auto.util.StringUtil;
 
+/**
+* 自动装配浏览器工厂
+* 
+* @author sekift
+*/
 public class AssembleBrowserFactory {
 	private static final Logger logger = LoggerFactory
 			.getLogger(AssembleBrowserFactory.class);

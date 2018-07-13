@@ -9,19 +9,6 @@ public class Constants {
 		String gecko = "webdriver.gecko.driver";
 		//opera驱动
 		String opera = "webdriver.opera.driver";
-		
-		// 浏览器地址
-		String driverChromeDir = "D:\\selenium\\chromedriver.exe";
-		// gecko地址
-		String geckoDir = "D:\\selenium\\geckodriver.exe";
-		// 新版Firefox地址
-		String firefoxDir = "D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe";
-		// 旧版Firefox地址
-		String firefoxDirOld = "D:\\Program Files\\Mozilla Firefox\\firefox.exe";
-		//opera驱动地址
-		String operaDir = "D:\\selenium\\operadriver.exe";
-		//opera浏览器地址
-        String operaBrowserDir = "D:\\Program Files\\Opera\\51.0.2830.55\\opera.exe";
 	}
 
 	// 账号分割

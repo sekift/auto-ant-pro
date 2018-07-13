@@ -8,6 +8,11 @@ import org.slf4j.LoggerFactory;
 
 import com.ant.auto.util.SleepUtil;
 
+/**
+ * 微博登录
+ * @author sekift
+ *
+ */
 public class WeiboLogin {
 	private static final Logger logger = LoggerFactory
 			.getLogger(WeiboLogin.class);

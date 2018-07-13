@@ -12,12 +12,16 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.util.JsoupUtil;
 import com.ant.auto.util.SleepUtil;
 
+/**
+ * 百度签到
+ * @author sekift
+ *
+ */
 public class BaiduSignUp {
 	private static final Logger logger = LoggerFactory.getLogger(BaiduSignUp.class);
 	private static final String tieBaUrl = "https://tieba.baidu.com";
 	private static final String signUrlPro = "/?page=like";
 
-	// 百度签到
 	public static void signUpRun(String username, String password, WebDriver driverPre) {
 		WebDriver driver = BaiduLogin.baiduLogin(username, password, driverPre);
 

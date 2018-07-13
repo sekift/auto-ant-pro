@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import com.ant.auto.Constants;
-import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SleepUtil;
 
 public class LoginTest {
 	private static final String baseUrl = "https://passport.tianya.cn/";
 	public static void main(String args[]){
-		WebDriver driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
+		WebDriver driver = AssembleBrowserFactory.getBrower();
 		
 	    driver.get(baseUrl + "/register/default.jsp?fowardURL=");
 //	    assertEquals("天涯社区账号_注册", driver.getTitle());
@@ -28,15 +27,14 @@ public class LoginTest {
 	    
 	    driver.findElement(By.id("sign")).click();
 	    driver.findElement(By.id("vwriter")).clear();
-	    driver.findElement(By.id("vwriter")).sendKeys("东皇战影");
+	    driver.findElement(By.id("vwriter")).sendKeys("东皇影");
 	    SleepUtil.sleepBySecond(5, 8);
 	    driver.findElement(By.id("vpassword")).clear();
-	    driver.findElement(By.id("vpassword")).sendKeys("访问纷纷为");
+	    driver.findElement(By.id("vpassword")).sendKeys("访问纷为");
 	    SleepUtil.sleepBySecond(5, 8);
 	    driver.findElement(By.id("loginBtn")).click();
 //	    assertEquals("登录中......", driver.getTitle());
 //	    assertEquals("登录中......", driver.getTitle());
-//	    assertEquals("东皇战影_天涯社区", driver.getTitle());
 	    
 	    SleepUtil.sleepBySecond(30, 40);
 	    driver.quit();
