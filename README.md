@@ -24,7 +24,7 @@ log4j.properties中的log4j.appender.fileout.File=D:/www/application/auto-ant-pr
 		<opera_browser_dir>D:/Program Files/Opera/launcher.exe</opera_browser_dir><br />
 	</browser_dir><br />
 4.浏览器自动选择配置<br />
-config/client.xml的<driver>下的是启动哪一个浏览器的配置，use为true表示选择他，false为不选择，多个为true以靠前的为准；chrome.mobile表示以手机界面启动（在百度登录时需要），如果不想以手机界面启动则置空。<br />
+config/client.xml的driver是选择启动哪一个浏览器的配置，use为true表示选择他，false为不选择，多个为true以靠前的为准；chrome.mobile表示以手机界面启动（在百度登录时需要），如果不想以手机界面启动则置空。<br />
 5.其他配置<br />
 5.1 baidu配置：account中填账号密码，使用----分隔；<br />
 5.2 weibo配置：account中填账号密码，使用----分隔；<br />
