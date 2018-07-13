@@ -3,11 +3,11 @@
 <properties>
 	<driver>
 		<chrome>
-			<use>false</use>
+			<use>true</use>
 			<mobile>iPhone 6</mobile>
 		</chrome>
 		<firefox>
-			<use>true</use>
+			<use>false</use>
 			<option>new</option>
 		</firefox>
 		<opera>

@@ -3,7 +3,7 @@
 
 # 开始使用<br />
 1.从git拉Maven项目到本地（或者直接下载zip包），然后导入eclipse。<br />
-2.下载相匹配的driver（可将项目driver文件里的解压，也可以到https://www.seleniumhq.org/ 选择下面的版本下载）和浏览器（到各自浏览器网址下载），版本需要相差太大，避免不兼容。<br />
+2.下载相匹配的driver（可将项目driver文件里的解压，也可以到https://www.seleniumhq.org/ 选择下面的版本下载）和浏览器（到各自浏览器网址下载），版本不要相差太大，避免不兼容。<br />
 2.1 chrome<br />
  chrome版本：67.0.3396.99；driver版本：2.36.540470 <br />
 2.2 firefox<br />
@@ -24,21 +24,7 @@ log4j.properties中的log4j.appender.fileout.File=D:/www/application/auto-ant-pr
 		<opera_browser_dir>D:/Program Files/Opera/launcher.exe</opera_browser_dir><br />
 	</browser_dir><br />
 4.浏览器自动选择配置<br />
-下面的是启动哪一个浏览器的配置，use为true表示选择他，false为不选择；chrome.mobile表示以手机界面启动（在百度登录时需要），如果不想以手机界面启动则置空。<br />
-	<driver><br />
-		<chrome><br />
-			<use>false</use><br />
-			<mobile>iPhone 6</mobile><br />
-		</chrome><br />
-		<firefox><br />
-			<use>true</use><br />
-			<option>new</option><br />
-		</firefox><br />
-		<opera><br />
-			<use>false</use><br />
-			<option>new</option><br />
-		</opera><br />
-	</driver><br />
+config/client.xml的<driver>下的是启动哪一个浏览器的配置，use为true表示选择他，false为不选择，多个为true以靠前的为准；chrome.mobile表示以手机界面启动（在百度登录时需要），如果不想以手机界面启动则置空。<br />
 5.其他配置<br />
 5.1 baidu配置：account中填账号密码，使用----分隔；<br />
 5.2 weibo配置：account中填账号密码，使用----分隔；<br />
@@ -52,7 +38,7 @@ log4j.properties中的log4j.appender.fileout.File=D:/www/application/auto-ant-pr
 
 # 更新<br />
 2018/07/13 更新 <br />
-1.从auto-ant(https://github.com/sekift/auto-ant)升级到自由蚂蚁专业版，使用Maven构建项目。<br />
+1.从auto-ant(https://github.com/sekift/auto-ant )升级到自由蚂蚁专业版，使用Maven构建项目。<br />
 2.使用phantomjsdriver-1.4.0，selenium退回到3.5.1版本（再升高将可能不兼容）。<br />
 3.其他jar包连带升级。<br />
 4.修改装配firefox浏览器方法。<br />
