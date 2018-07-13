@@ -46,7 +46,7 @@ log4j.properties中的log4j.appender.fileout.File=D:/www/application/auto-ant-pr
 5.4 toutiao_target配置：account表示头条的目标账号，无密码；<br />
 5.5 baidu_flower配置：url中填写送花地址和送花个数，使用----分隔。<br />
 6.启动<br />
-6.1 百度：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduSignUp.sendFlower()为送花；<br />
+6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduSignUp.sendFlower()为送花；<br />
 6.2 头条：ToutiaoMain；直接运行；<br />
 6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博。<br />
 
