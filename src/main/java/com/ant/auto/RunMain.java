@@ -11,7 +11,7 @@ public class RunMain {
 			Map<String,String> m = map.get(name);
 			if(Boolean.valueOf(m.get("use"))){
 				System.out.println(name);
-				System.out.println(m.get("option"));
+				System.out.println(m.get("mobile"));
 			}
 		}
 	}
