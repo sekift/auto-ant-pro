@@ -18,8 +18,9 @@ public class WeiboMain {
 			driver = AssembleBrowserFactory.getBrower();
 			WeiboSend.sendTweet(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver);
-			driver.close();
 			driver.quit();
 		}
+		driver.quit();
+		driver.close();
 	}
 }

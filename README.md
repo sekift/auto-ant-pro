@@ -32,14 +32,14 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 5.4 toutiao_target配置：account表示头条的目标账号，无密码；<br />
 5.5 baidu_flower配置：url中填写送花地址和送花个数，使用----分隔。<br />
 6.启动<br />
-6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduSignUp.sendFlower()为送花；<br />
+6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduFlower.sendFlower()为送花；<br />
 6.2 头条：ToutiaoMain；直接运行；<br />
 6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博。<br />
 
 # 更新<br />
 2018/07/13 更新 <br />
 1.从auto-ant(https://github.com/sekift/auto-ant )升级到自由蚂蚁专业版，使用Maven构建项目。<br />
-2.使用phantomjsdriver-1.4.0，selenium退回到3.5.1版本（再升高将可能不兼容）。<br />
+2.使用phantomjsdriver-1.4.3，selenium退回到3.5.1版本（再升高将可能不兼容）。<br />
 3.其他jar包连带升级。<br />
 4.修改装配firefox浏览器方法。<br />
 5.升级opera浏览器到54版本（54.0.2952.51），同时operadriver升级到2.37版本，修复打开opera的配置问题。<br />

@@ -16,14 +16,11 @@ public class BaiduMain {
 				Constants.BAIDU_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowserFactory.getBrower();
-			BaiduSignUp.signUpRun(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
-			//BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
-			
-			// 直接关闭
-			driver.close();
+			//BaiduSignUp.signUpRun(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
+			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
 			driver.quit();
 		}
-		driver.close();
 		driver.quit();
+		driver.close();
 	}
 }

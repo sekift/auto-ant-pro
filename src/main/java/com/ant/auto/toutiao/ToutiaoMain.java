@@ -41,8 +41,9 @@ public class ToutiaoMain {
 			}
 			logger.info(map.get(Constants.USERNAME_STR) + " 已经完成任务。");
 			SleepUtil.sleepByMinute(3, 5);
-			driver.close();
 			driver.quit();
 		}
+		driver.quit();
+		driver.close();
 	}
 }
