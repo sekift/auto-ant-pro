@@ -1,5 +1,8 @@
 package com.ant.auto.weibo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,11 +27,12 @@ public class WeiboSearchAndFollow {
 	 * @param password
 	 * @param driverDis
 	 */
-	public static void searchUser(String username, String password, WebDriver driver, String user) {
+	public static WebDriver searchUser(String username, String password, WebDriver driver, String user) {
 		driver.navigate().to(WeiboSearchUserUrl + user);
 		SleepUtil.sleepBySecond(3, 5);
 		driver.findElement(By.cssSelector("em.red")).click();
 		SleepUtil.sleepBySecond(5, 10);
+		return driver;
 	}
 
 	/**
@@ -36,7 +40,7 @@ public class WeiboSearchAndFollow {
 	 * 
 	 * @param driver
 	 */
-	public static void followUser(WebDriver driver) {
+	public static WebDriver followUser(WebDriver driver) {
 		// 如果还没有关注先关注
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "+关注");
 
@@ -49,20 +53,28 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
 		SleepUtil.sleepBySecond(5, 10);
+		WebDriverOperate.switchWindows(driver);
+		SleepUtil.sleepBySecond(2, 5);
+		return driver;
 	}
 	
 	/**
-	 * 搜索用户，默认取第一个用户，因为是全称匹配
+	 * 搜索话题
 	 * 
 	 * @param username
 	 * @param password
 	 * @param driverDis
 	 */
-	public static void searchSuperTalk(WebDriver driver, String superTalk) {
-		driver.navigate().to(WeiboSearchSuperTalkUrl + superTalk);
+	public static WebDriver searchSuperTalk(WebDriver driver, String superTalk) {
+		try {
+			driver.navigate().to(WeiboSearchSuperTalkUrl + URLEncoder.encode(superTalk, "utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		SleepUtil.sleepBySecond(3, 5);
 	    driver.findElement(By.linkText("【超话】"+superTalk.replaceAll("#", ""))).click();
 		SleepUtil.sleepBySecond(5, 10);
+		return driver;
 	}
 	
 	/**
@@ -70,7 +82,7 @@ public class WeiboSearchAndFollow {
 	 * 
 	 * @param driver
 	 */
-	public static void followSuperTalk(WebDriver driver) {
+	public static WebDriver followSuperTalk(WebDriver driver) {
 		// 如果还没有关注先关注
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "+关注");
 
@@ -83,6 +95,7 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
 		SleepUtil.sleepBySecond(5, 10);
+		return driver;
 	}
 	
 	/**
@@ -90,7 +103,7 @@ public class WeiboSearchAndFollow {
 	 * 
 	 * @param driver
 	 */
-	public static void signUpSuperTalk(WebDriver driver) {
+	public static WebDriver signUpSuperTalk(WebDriver driver) {
 		// 还没有签到就签到
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "签到");
 
@@ -99,6 +112,7 @@ public class WeiboSearchAndFollow {
 		}
 		//driver.findElement(By.cssSelector("a.W_btn_b.btn_32px> span")).click();
 		SleepUtil.sleepBySecond(5, 10);
+		return driver;
 	}
     
 }

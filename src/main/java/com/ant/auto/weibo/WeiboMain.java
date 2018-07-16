@@ -30,20 +30,19 @@ public class WeiboMain {
 			//发微博
 			//WeiboSend.sendTweet(driver);
 			for (Map<String, String> targetMap : targetList) {
-				String[] weiboTarget = targetMap.get(Constants.TARGET_STR).split(Constants.ACCOUNT_SEPARATOR);
-				String user = weiboTarget[0];
-				String superTalk = weiboTarget[1];
+				String user = targetMap.get(Constants.USERNAME_STR);
+				String superTalk = targetMap.get(Constants.PASSWORD_STR);
 				//查找用户
-				WeiboSearchAndFollow.searchUser(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR),
+				driver = WeiboSearchAndFollow.searchUser(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR),
 						driver, user);
 				//关注用户
-				WeiboSearchAndFollow.followUser(driver);
+				driver = WeiboSearchAndFollow.followUser(driver);
 				//查找超话
-				WeiboSearchAndFollow.searchSuperTalk(driver, superTalk);
+				driver = WeiboSearchAndFollow.searchSuperTalk(driver, superTalk);
 				//关注超话
-				WeiboSearchAndFollow.followSuperTalk(driver);
+				driver = WeiboSearchAndFollow.followSuperTalk(driver);
 				//签到超话
-				WeiboSearchAndFollow.signUpSuperTalk(driver);
+				driver = WeiboSearchAndFollow.signUpSuperTalk(driver);
 				driver.quit();
 			}
 		}
