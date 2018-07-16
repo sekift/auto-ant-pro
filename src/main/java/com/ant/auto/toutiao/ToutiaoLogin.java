@@ -1,7 +1,5 @@
 package com.ant.auto.toutiao;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +31,7 @@ public class ToutiaoLogin {
 	 */
 	public static WebDriver ttLogin(String username, String password,
 			WebDriver driver, int type) {
-		driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.navigate().to(toutiaoUrl);
 		SleepUtil.sleepBySecond(2, 4);
 		// 点击跳到登录
@@ -137,7 +135,10 @@ public class ToutiaoLogin {
 		WebElement webEle = WebDriverOperate.getWebElement(driver,
 				WebElementType.Class.toString(), "account_name");
 		if (webEle == null) {
-			driver.findElement(By.partialLinkText("帐号密码登录 ")).click();
+			//driver.findElement(By.partialLinkText("帐号密码登录 ")).click();
+			//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			SleepUtil.sleepBySecond(2, 4);
+			driver.findElement(By.id("switcher_plogin")).click();
 			SleepUtil.sleepBySecond(2, 4);
 			driver.findElement(By.id("u")).clear();
 			driver.findElement(By.id("u")).sendKeys(username);

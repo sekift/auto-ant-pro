@@ -12,8 +12,7 @@ import com.ant.auto.util.SleepUtil;
  *
  */
 public class WeiboSend {
-	public static void sendTweet(String username, String password, WebDriver driverDis) {
-		WebDriver driver = WeiboLogin.weiboLogin(username, password, driverDis);
+	public static void sendTweet(WebDriver driver) {
 		Actions actions = new Actions(driver);
 		actions.moveByOffset(0, 0).click().build().perform();// 点击空白
 		driver.findElement(By.cssSelector("textarea.W_input")).clear();
