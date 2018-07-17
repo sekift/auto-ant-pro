@@ -28,6 +28,7 @@ public class WeiboSearchAndFollow {
 	 * @param driverDis
 	 */
 	public static WebDriver searchUser(String username, String password, WebDriver driver, String user) {
+		SleepUtil.sleepBySecond(3, 5);
 		driver.navigate().to(WeiboSearchUserUrl + user);
 		SleepUtil.sleepBySecond(3, 5);
 		driver.findElement(By.cssSelector("em.red")).click();
@@ -42,6 +43,7 @@ public class WeiboSearchAndFollow {
 	 */
 	public static WebDriver followUser(WebDriver driver) {
 		// 如果还没有关注先关注
+		WebDriverOperate.switchToWindow(driver, "的微博_微博", false);
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "+关注");
 
 		if (null != we) {
@@ -52,8 +54,6 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("Y已关注")).click();
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
-		SleepUtil.sleepBySecond(5, 10);
-		WebDriverOperate.switchWindows(driver);
 		SleepUtil.sleepBySecond(2, 5);
 		return driver;
 	}
@@ -83,6 +83,8 @@ public class WeiboSearchAndFollow {
 	 * @param driver
 	 */
 	public static WebDriver followSuperTalk(WebDriver driver) {
+		WebDriverOperate.switchToWindow(driver, "新浪微博超级话题", false);
+		SleepUtil.sleepBySecond(2, 4);
 		// 如果还没有关注先关注
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "+关注");
 
@@ -94,7 +96,7 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("Y已关注")).click();
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
-		SleepUtil.sleepBySecond(5, 10);
+		SleepUtil.sleepBySecond(3, 7);
 		return driver;
 	}
 	
@@ -106,11 +108,9 @@ public class WeiboSearchAndFollow {
 	public static WebDriver signUpSuperTalk(WebDriver driver) {
 		// 还没有签到就签到
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "签到");
-
 		if (null != we) {
 			we.click();
 		}
-		//driver.findElement(By.cssSelector("a.W_btn_b.btn_32px> span")).click();
 		SleepUtil.sleepBySecond(5, 10);
 		return driver;
 	}

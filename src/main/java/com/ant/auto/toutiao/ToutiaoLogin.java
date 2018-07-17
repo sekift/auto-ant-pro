@@ -135,9 +135,10 @@ public class ToutiaoLogin {
 		WebElement webEle = WebDriverOperate.getWebElement(driver,
 				WebElementType.Class.toString(), "account_name");
 		if (webEle == null) {
-			//driver.findElement(By.partialLinkText("帐号密码登录 ")).click();
 			//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			SleepUtil.sleepBySecond(2, 4);
+			//切换到iframe内部
+	        driver.switchTo().frame("ptlogin_iframe");
+	        SleepUtil.sleepBySecond(2, 4);
 			driver.findElement(By.id("switcher_plogin")).click();
 			SleepUtil.sleepBySecond(2, 4);
 			driver.findElement(By.id("u")).clear();

@@ -4,7 +4,7 @@
 	<driver>
 		<chrome>
 			<use>true</use>
-			<mobile>iPhone 6</mobile>
+			<mobile></mobile>
 		</chrome>
 		<firefox>
 			<use>false</use>
@@ -37,9 +37,12 @@
 
 	<qq>
 		<account>xxx----xxx</account>
-		<account>xxx----xxx</account>
 	</qq>
-
+	
+	<weibo_target>
+		<account>SNH48-陈思----#陈思#</account>
+	</weibo_target>
+	
 	<toutiao_target>
 		<account>尴尬癌专治</account>
 	</toutiao_target>
