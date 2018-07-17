@@ -29,8 +29,9 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 5.1 baidu配置：account中填账号密码，使用----分隔；<br />
 5.2 weibo配置：account中填账号密码，使用----分隔；<br />
 5.3 qq配置：account中填账号密码，使用----分隔；<br />
-5.4 toutiao_target配置：account表示头条的目标账号，无密码；<br />
-5.5 baidu_flower配置：url中填写送花地址和送花个数，使用----分隔。<br />
+5.4 weibo_target配置：account中填用户名和超话，使用----分隔；<br />
+5.5 toutiao_target配置：account表示头条的目标账号，无密码；<br />
+5.6 baidu_flower配置：url中填写送花地址和送花个数，使用----分隔。<br />
 6.启动<br />
 6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduFlower.sendFlower()为送花；<br />
 6.2 头条：ToutiaoMain；直接运行；<br />
