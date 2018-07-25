@@ -35,13 +35,13 @@
         <account>xxx----xxx</account>
 	</weibo>
 
+	<qq>
+		<account>xxx----xxx</account>
+	</qq>
+	
 	<weibo_target>
 		<account>SNH48-陈思----#陈思#</account>
 	</weibo_target>
-	
-	<qq>
-		<account>907208251----lingling434943</account>
-	</qq>
 
 	<toutiao_target>
 		<account>尴尬癌专治</account>
