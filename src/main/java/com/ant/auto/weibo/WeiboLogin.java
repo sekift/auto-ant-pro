@@ -1,7 +1,5 @@
 package com.ant.auto.weibo;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Navigation;
@@ -24,7 +22,6 @@ public class WeiboLogin {
 	public static WebDriver weiboLogin(String username, String password, WebDriver driver) {
 		Navigation navigation = driver.navigate();
 		navigation.to(weiboUrl);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		SleepUtil.sleepBySecond(10, 20);
 
 		driver.findElement(By.id("loginname")).clear();

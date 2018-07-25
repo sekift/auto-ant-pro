@@ -33,8 +33,7 @@ public class WeiboMain {
 				String user = targetMap.get(Constants.USERNAME_STR);
 				String superTalk = targetMap.get(Constants.PASSWORD_STR);
 				//查找用户
-				driver = WeiboSearchAndFollow.searchUser(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR),
-						driver, user);
+				driver = WeiboSearchAndFollow.searchUser(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver, user);
 				//关注用户
 				driver = WeiboSearchAndFollow.followUser(driver);
 				//查找超话

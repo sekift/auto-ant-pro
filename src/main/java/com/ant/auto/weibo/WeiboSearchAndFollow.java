@@ -74,6 +74,8 @@ public class WeiboSearchAndFollow {
 		SleepUtil.sleepBySecond(3, 5);
 	    driver.findElement(By.linkText("【超话】"+superTalk.replaceAll("#", ""))).click();
 		SleepUtil.sleepBySecond(5, 10);
+		WebDriverOperate.switchToWindow(driver, "新浪微博超级话题", false);
+		SleepUtil.sleepBySecond(2, 4);
 		return driver;
 	}
 	
@@ -83,11 +85,8 @@ public class WeiboSearchAndFollow {
 	 * @param driver
 	 */
 	public static WebDriver followSuperTalk(WebDriver driver) {
-		WebDriverOperate.switchToWindow(driver, "新浪微博超级话题", false);
-		SleepUtil.sleepBySecond(2, 4);
 		// 如果还没有关注先关注
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "+关注");
-
 		if (null != we) {
 			we.click();
 		}
@@ -107,7 +106,9 @@ public class WeiboSearchAndFollow {
 	 */
 	public static WebDriver signUpSuperTalk(WebDriver driver) {
 		// 还没有签到就签到
+		//driver.findElement(By.linkText("签到")).click();
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "签到");
+		//WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.CssSelector.toString(), "a.W_btn_b.btn_32px > span");
 		if (null != we) {
 			we.click();
 		}
