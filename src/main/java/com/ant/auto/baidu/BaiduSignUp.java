@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver.Navigation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.Constants;
 import com.ant.auto.util.JsoupUtil;
 import com.ant.auto.util.SleepUtil;
 
@@ -27,7 +28,7 @@ public class BaiduSignUp {
 
 		Navigation navigation = driver.navigate();
 		navigation.to(tieBaUrl + signUrlPro);
-		SleepUtil.sleepBySecond(1, 5);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		String wd = driver.getPageSource();
 		Document doc = Jsoup.parse(wd);
 		Elements eles = doc.getElementsByClass("j_forumTile_wrapper");
@@ -39,11 +40,11 @@ public class BaiduSignUp {
 			// 这里可以换成点击 签到 按钮 更加真实，而且不用tbs
 			navigation.to(tieBaUrl + "/mo/q/sign?tbs=" + tbs + "&kw=" + ele.select("a").attr("data-start-app-param")
 					+ "&is_like=1&fid=" + ele.select("a").attr("data-fid"));
-			SleepUtil.sleepBySecond(1, 5);
+			SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		}
-		SleepUtil.sleepBySecond(1, 5);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		navigation.to(tieBaUrl + signUrlPro);
-		SleepUtil.sleepBySecond(10, 20);
+		SleepUtil.sleepBySecond(Constants.SPEED_THR_MIN, Constants.SPEED_THR_MAX);
 	}
 
 	// 获取他的tbs

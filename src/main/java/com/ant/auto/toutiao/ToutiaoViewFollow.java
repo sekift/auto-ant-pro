@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.SleepUtil;
@@ -34,11 +35,11 @@ public class ToutiaoViewFollow {
 				WebElementType.Class.toString(), userHeadSpanStr);
 		// 跳转到关注页
 		driver.findElement(By.cssSelector(userHeadSpanStr)).click();
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 
 		// 切换到新打开的窗口
 		driver = WebDriverOperate.switchToWindow(driver, userHead + titlePro, false);
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		String number = driver.findElement(By.cssSelector(numberIStr))
 				.getText();
 		int followSum = Integer.valueOf(number);
@@ -49,11 +50,11 @@ public class ToutiaoViewFollow {
 			// 先转去搜索并关注
 			driver = searchAndFollow(driver, target, userHead + titlePro);
 		}
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 
 		// 跳转到关注详情栏
 		driver.findElement(By.cssSelector(numberIStr)).click();
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		/**
 		 * 关注列表 第一个 driver.findElement(By.cssSelector("a > h3")).click();
 		 * 第二个driver
@@ -94,25 +95,25 @@ public class ToutiaoViewFollow {
 		driver.findElement(By.name("keyword")).click();
 		driver.findElement(By.name("keyword")).clear();
 		driver.findElement(By.name("keyword")).sendKeys(target);
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		// 错误
 		// driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
 		// 改用回车键代替
 		driver.findElement(By.name("keyword")).sendKeys(Keys.ENTER);
-		SleepUtil.sleepBySecond(1, 2);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		//转到
 		driver = WebDriverOperate.switchToWindow(driver, searchTitle, false);
-		SleepUtil.sleepBySecond(3, 5);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		driver.findElement(By.cssSelector("div.subscribe.subscribe-active"))
 				.click();
 		logger.info("关注成功，target=" + target);
 		// 取消关注
 		// driver.findElement(By.cssSelector("div.subscribe.")).click();
 		// 跳回去并刷新
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		driver = WebDriverOperate.switchToWindow(driver, targetTitle, false);
 		driver.navigate().refresh();
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		return driver;
 	}
 

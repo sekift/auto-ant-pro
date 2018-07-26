@@ -45,8 +45,17 @@ public class Constants {
 	public static final String OPERA_DRIVER_DIR = "opera_driver_dir"; 
 	public static final String OPERA_BROWSER_DIR = "opera_browser_dir"; 
 	
+	// 头条分享类型
 	public static final int SHARE_WEIBO = 1;
 	public static final int SHARE_QQ = 2;
 	
-
+	// 模拟停留时间，控制速度，分3档：1-5秒，5-10秒，10-20秒
+	public static final int SPEED_ONE_MIN = 1;
+	public static final int SPEED_ONE_MAX = 3;
+	public static final int SPEED_TWO_MIN = 5;
+	public static final int SPEED_TWO_MAX = 7;
+	public static final int SPEED_THR_MIN = 10;
+	public static final int SPEED_THR_MAX = 14;
+	
+	
 }

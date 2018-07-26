@@ -37,7 +37,7 @@ public class BaiduFlower {
 				Constants.BAIDU_FLOWER_STR, Constants.URL_STR);
 		for (Map<String, String> map : list) {
 			navigation.to(map.get(Constants.USERNAME_STR));// 手机端
-			SleepUtil.sleepBySecond(1, 5);
+			SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 			// 滚动
 			// 2018.4.5 改版已经不用滚动,改成跳转到页面后再点了
 			// ((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
@@ -53,16 +53,16 @@ public class BaiduFlower {
 						.xpath("//*[@data-lemmaid='" + lemmaId + "']"));
 				try {
 					for (int i = 0; i < maxCount; i++) {
-						SleepUtil.sleepBySecond(1, 2);
+						SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 						element.click();
 					}
 				} catch (WebDriverException e) {
 					logger.error("出错了：" + e.getMessage());
 				}
 			}
-			SleepUtil.sleepBySecond(2, 5);
+			SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
 		}
-		SleepUtil.sleepBySecond(3, 8);
+		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
 		// 直接关闭
 		driver.quit();
 	}
