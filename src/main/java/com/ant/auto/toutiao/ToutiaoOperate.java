@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
-import com.ant.auto.util.SleepUtil;
+import com.ant.auto.util.S;
 
 /**
  * 包括点赞、收藏、评论、转发等功能
@@ -25,19 +25,19 @@ public class ToutiaoOperate {
 		/**
 		 * 打开第一篇文章li[1] //div/ul/li[1]/div/div/div/div/a
 		 */
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		String firstArticle = "//div/ul/li[1]/div/div/div/div/a";
 		// 文章的title
 		String titleStr = WebDriverOperate.getWebElement(driver,
 				WebElementType.Xpath.toString(), firstArticle).getText();
 		driver.findElement(By.xpath(firstArticle)).click();
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		// 切换到第一篇文章
 		WebDriverOperate.switchToWindow(driver, titleStr,false);
 		// 左右切换 driver.findElement(By.cssSelector("ul.tab.tab-1 > li")).click();
 		// 暂时用不到
 
-		SleepUtil.sleepBySecond(Constants.SPEED_THR_MIN, Constants.SPEED_THR_MAX);
+		S.s3();
 		// 关注
 		/**
 		 * unsubscribe 未关注 subscribe 已关注
@@ -51,17 +51,17 @@ public class ToutiaoOperate {
 				driver.findElement(By.cssSelector(unsubscribe)).click();
 			}
 		}
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		
 		Actions actions = new Actions(driver);
 		actions.moveByOffset(154, 223).click().build().perform();// 点击
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		actions.moveByOffset(322, 445).click().build().perform();// 点击
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		actions.moveByOffset(523, 660).click().build().perform();// 点击
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		actions.moveByOffset(714, 620).click().build().perform();// 点击
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		// 收藏 有bug 重复点击会去掉收藏
 		/**
 		 * y-icon icon-favorite 未收藏 
@@ -98,18 +98,18 @@ public class ToutiaoOperate {
 		//driver.findElement(By.cssSelector(shareWeibo)).click();
 		driver.findElement(By.cssSelector("i.icon-sina")).click();
 		// 打开了新的小窗口
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		// 跳转到
 		String shareWeiboTile = "分享到微博-微博-随时随地分享身边的新鲜事儿";
 		WebDriverOperate.switchToWindow(driver, shareWeiboTile, false);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		// 转发 默认点赞
 		// TODO 微博必须实名认证才继续进行，待修复BUG
 		driver.findElement(By.id("shareIt")).click();
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 		
 		//TODO 转发完应该关闭小窗口，并回到原窗口
 		
@@ -128,13 +128,13 @@ public class ToutiaoOperate {
 		// 跳转到
 		String shareQQTile = "分享到QQ空间和朋友网";
 		WebDriverOperate.switchToWindow(driver, shareQQTile, false);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		// 转发
 		driver.findElement(By.cssSelector("span.btn_s1_h28_r")).click();
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 		
 		//TODO 转发完应该关闭小窗口，并回到原窗口
 		return driver;

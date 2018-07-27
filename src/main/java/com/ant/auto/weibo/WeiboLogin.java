@@ -6,8 +6,7 @@ import org.openqa.selenium.WebDriver.Navigation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
-import com.ant.auto.util.SleepUtil;
+import com.ant.auto.util.S;
 
 /**
  * 微博登录
@@ -23,14 +22,14 @@ public class WeiboLogin {
 	public static WebDriver weiboLogin(String username, String password, WebDriver driver) {
 		Navigation navigation = driver.navigate();
 		navigation.to(weiboUrl);
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 
 		driver.findElement(By.id("loginname")).clear();
 		driver.findElement(By.id("loginname")).sendKeys(username);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys(password);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(
 				By.xpath("//div[@id='pl_login_form']/div/div[3]/div[6]/a/span"))
 				.click();
@@ -45,7 +44,7 @@ public class WeiboLogin {
 		} else {
 			logger.info("weibo登录失败，username=" + username);
 		}
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		return driver;
 	}
 }

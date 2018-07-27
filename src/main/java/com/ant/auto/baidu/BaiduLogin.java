@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
-import com.ant.auto.util.SleepUtil;
+import com.ant.auto.util.S;
 
 /**
  * 百度登录
@@ -28,13 +27,13 @@ public class BaiduLogin {
 			WebDriver driver) {
 		//driver.manage().window().setSize(new Dimension(700, 800));
 		driver.navigate().to(baiduLoginUrl);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(By.id("login-username")).sendKeys(username);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(By.id("login-password")).sendKeys(password);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(By.id("login-submit")).click();
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 
 		// 可能的手机、邮箱或钱包绑定银行卡验证（开启登录保护才有）
 		try {

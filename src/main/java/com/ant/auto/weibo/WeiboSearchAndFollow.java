@@ -8,10 +8,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
-import com.ant.auto.util.SleepUtil;
+import com.ant.auto.util.S;
 
 /**
  * 微博搜索并关注
@@ -30,11 +29,11 @@ public class WeiboSearchAndFollow {
 	 * @param driverDis
 	 */
 	public static WebDriver searchUser(String username, String password, WebDriver driver, String user) {
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.navigate().to(WeiboSearchUserUrl + user);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		driver.findElement(By.cssSelector("em.red")).click();
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		return driver;
 	}
 
@@ -56,7 +55,7 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("Y已关注")).click();
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		return driver;
 	}
 	
@@ -73,11 +72,11 @@ public class WeiboSearchAndFollow {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 	    driver.findElement(By.linkText("【超话】"+superTalk.replaceAll("#", ""))).click();
-	    SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+	    S.s2();
 		WebDriverOperate.switchToWindow(driver, "新浪微博超级话题", false);
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		return driver;
 	}
 	
@@ -97,7 +96,7 @@ public class WeiboSearchAndFollow {
 		 * driver.findElement(By.linkText("Y已关注")).click();
 		 * driver.findElement(By.linkText("取消关注")).click();
 		 */
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		return driver;
 	}
 	
@@ -110,16 +109,16 @@ public class WeiboSearchAndFollow {
 		//20180726 因为转到页面后可能会自动滚去播放第一条视频，看不到签到按钮，因此需要滚会顶部。
 		((JavascriptExecutor) driver).executeScript("scrollTo(0, 50)");
 		// 还没有签到就签到
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		//driver.findElement(By.linkText("签到")).click();
 		WebElement we = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "签到");
 		if (null != we) {
 			we.click();
 		}
-		SleepUtil.sleepBySecond(Constants.SPEED_ONE_MIN, Constants.SPEED_ONE_MAX);
+		S.s1();
 		//20180726 签到后刷新本页，确认签到成功
 		driver.navigate().refresh();
-		SleepUtil.sleepBySecond(Constants.SPEED_TWO_MIN, Constants.SPEED_TWO_MAX);
+		S.s2();
 		return driver;
 	}
     

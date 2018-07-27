@@ -38,6 +38,9 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博。<br />
 
 # 更新<br />
+2018/07/27 更新 <br />
+1.优化代码。<br />
+
 2018/07/26 更新 <br />
 1.修复超话签到因滚动而失败的BUG，并添加刷新本页查看签到结果。<br />
 2.集中控制停留时间，控制点击的快慢速度。<br />
