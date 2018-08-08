@@ -13,12 +13,11 @@ import com.ant.auto.util.S;
 */
 public class TianyaLogin {
 	
-	private static final String bbsUrl = "http://bbs.tianya.cn/";
 	private static final String baseUrl = "https://passport.tianya.cn/";
 	
 	public static WebDriver login(String username, String password,
 			WebDriver driver) {
-	    driver.get(baseUrl + "/register/default.jsp?fowardURL=" + bbsUrl);
+	    driver.get(baseUrl + "/register/default.jsp?fowardURL=");
 	    
 	    Actions actions = new Actions(driver);
 		actions.moveByOffset(154, 223).click().build().perform();// 点击
