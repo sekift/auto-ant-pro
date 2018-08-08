@@ -38,6 +38,9 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博。<br />
 
 # 更新<br />
+2018/08/08 更新 <br />
+1.添加某网自动注册、自动登录以及自动点赞功能。<br />
+
 2018/07/27 更新 <br />
 1.优化代码。<br />
 

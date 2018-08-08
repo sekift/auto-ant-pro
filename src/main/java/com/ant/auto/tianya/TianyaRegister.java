@@ -7,7 +7,7 @@ import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SendMessageTool;
 import com.ant.auto.util.SleepUtil;
 
-public class TianyaRegisterTest {
+public class TianyaRegister {
 	public static void main(String[] args) {
 		WebDriver driver = AssembleBrowserFactory.getBrower();
 

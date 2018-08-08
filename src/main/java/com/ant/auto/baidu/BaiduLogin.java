@@ -20,7 +20,7 @@ public class BaiduLogin {
 	private static final String baiduLoginUrl = "https://wappass.baidu.com/passport/?"
 			+ "login&tpl=wimn&ssid%3D0%26amp%3B"
 			+ "from%3D844b%26amp%3Buid%3D%26amp%3Bpu%3Dsz%25401320_2001%252Cta%2540"
-			+ "iphone_1_10.0_3_602%26amp%3Bbd_page_type%3D1&tn=&regtype=1"
+			+ "iphone_1_11.0_3_602%26amp%3Bbd_page_type%3D1&tn=&regtype=1"
 			+ "&u=https%3A%2F%2Fm.baidu.com";
 
 	public static WebDriver baiduLogin(String username, String password,
@@ -46,6 +46,7 @@ public class BaiduLogin {
 		}
 		// 暂时没有判断是否真正登录成功，通过即成功
 		logger.info("登录成功，username= " + username);
+		S.s1();
 		return driver;
 	}
 }
