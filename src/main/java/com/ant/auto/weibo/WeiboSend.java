@@ -18,7 +18,7 @@ public class WeiboSend {
 		driver.findElement(By.cssSelector("textarea.W_input")).clear();
 		S.s1();
 		driver.findElement(By.cssSelector("textarea.W_input")).sendKeys(
-				"http://www.bubbt.com/btc/pan 云车站");
+				"http://www.bubbt.com/");
 		S.s1();
 		driver.findElement(By.linkText("发布")).click();
 		S.s1();

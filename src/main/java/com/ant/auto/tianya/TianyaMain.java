@@ -17,6 +17,7 @@ public class TianyaMain {
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowserFactory.getBrower();
 			TianyaZan.dianZan(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
+			driver.close();
 		}
 		driver.close();
 		driver.quit();

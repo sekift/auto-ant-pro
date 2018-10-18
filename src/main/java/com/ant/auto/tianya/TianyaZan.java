@@ -29,15 +29,15 @@ public class TianyaZan {
 	// 热贴版
 	private static final String bbsUrl = "http://bbs.tianya.cn";
 	// 自行修改页数
-	private static final String hotUrl = "http://bbs.tianya.cn/hotArticle.jsp?pn=" + 1;
+	public static final String hotUrl = "http://bbs.tianya.cn/hotArticle.jsp?pn=" + 1;
 	// 钱包页面
 	private static final String walletUrl = "http://bei.tianya.cn/wallet/index.do";
 
 	public static void dianZan(String username, String password, WebDriver driverPre) {
 		WebDriver driver = TianyaLogin.login(username, password, driverPre);
 
-		// 转到热贴版
-		driver.navigate().to(hotUrl);
+		// 转到热贴版 前面已经跳到了
+		//driver.navigate().to(hotUrl);
 		S.s1();
 		Actions actions = new Actions(driver);
 		actions.moveByOffset(1, 3).click().build().perform();// 点击
@@ -45,7 +45,7 @@ public class TianyaZan {
 		String wd = driver.getPageSource();
 		Document doc = Jsoup.parse(wd);
 		Elements eles = doc.getElementsByClass("td-title").select("a");
-		for (int i = 0; i < 29; i++) {// 100%的能量最多只能点29次赞
+		for (int i = 0; i < 33; i++) {// 100%的能量最多只能点29次赞
 			String url = bbsUrl + eles.get(i).attr("href");
 			// 设置为15秒
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -78,9 +78,9 @@ public class TianyaZan {
 
 		// 之后跳去钱包核查
 		driver.navigate().to(walletUrl);
-		// 点击天涯分
 		S.s1();
 
+		// 点击天涯分
 		WebElement fen = WebDriverOperate.getWebElement(driver, WebElementType.LinkText.toString(), "天涯分");
 		if (null != fen) {
 			fen.click();

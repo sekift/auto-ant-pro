@@ -17,7 +17,7 @@ public class TianyaLogin {
 	
 	public static WebDriver login(String username, String password,
 			WebDriver driver) {
-	    driver.get(baseUrl + "/register/default.jsp?fowardURL=");
+	    driver.get(baseUrl + "/register/default.jsp?fowardURL=" + TianyaZan.hotUrl);
 	    
 	    Actions actions = new Actions(driver);
 		actions.moveByOffset(154, 223).click().build().perform();// 点击

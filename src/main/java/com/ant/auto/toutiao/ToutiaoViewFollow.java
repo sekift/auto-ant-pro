@@ -42,7 +42,7 @@ public class ToutiaoViewFollow {
 		String number = driver.findElement(By.cssSelector(numberIStr))
 				.getText();
 		int followSum = Integer.valueOf(number);
-		// 此处待完善，如果这个人没有被关注，而关注的另外有人，这种情况没有考虑
+		// TODO 此处待完善，如果这个人没有被关注，而关注的另外有人，这种情况没有考虑
 		if (followSum == 0) {
 			logger.warn(userHead + " 此号没有关注人，请先关注。");
 
