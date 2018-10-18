@@ -35,7 +35,7 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 6.启动<br />
 6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduFlower.sendFlower()为送花；<br />
 6.2 头条：ToutiaoMain；直接运行；<br />
-6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博。<br />
+6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博；WeiboSearchAndFollow.xxx为查找、关注、超话等内容。<br />
 
 # 更新<br />
 2018/08/08 更新 <br />
