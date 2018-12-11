@@ -32,12 +32,18 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 5.4 weibo_target配置：account中填用户名和超话，使用----分隔；<br />
 5.5 toutiao_target配置：account表示头条的目标账号，无密码；<br />
 5.6 baidu_flower配置：url中填写送花地址和送花个数，使用----分隔。<br />
+5.6 taobao配置：account中填账号密码，使用----分隔。<br />
 6.启动<br />
 6.1 百度(必须使用chrome而且带mobile的配置)：BaiduMain；BaiduSignUp.signUpRun()方法为签到；BaiduFlower.sendFlower()为送花；<br />
 6.2 头条：ToutiaoMain；直接运行；<br />
-6.3 微博：WeiboMain：WeiboSend.sendTweet()为发博；WeiboSearchAndFollow.xxx为查找、关注、超话等内容。<br />
+6.3 微博：WeiboMain；WeiboSend.sendTweet()为发博；WeiboSearchAndFollow.xxx为查找、关注、超话等内容。<br />
+6.4 淘宝：TaobaoMain；直接运行。<br />
 
 # 更新<br />
+2018/12/11 更新 <br />
+1.添加在完成业务后强行杀死driver进程功能。<br />
+2.添加淘宝自动登录功能（使用firefox浏览器）。<br />
+
 2018/08/08 更新 <br />
 1.添加某网自动注册、自动登录以及自动点赞功能。<br />
 
@@ -86,7 +92,6 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 3.添加百度送花功能。<br />
 4.修复chrome模拟手机端bug。<br />
 5.修复头条改版引起的登录bug。<br />
-6.修复浏览器退出而driver仍然驻守的bug。<br />
 
 2017/9/1 更新 <br />
 1.更新selenium到3.5.3，jar包更新。<br />
@@ -114,18 +119,15 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
  [3期] 自动加好友，自动搜索排名<br />
  [4期] 自动游走，收集内容<br />
 # 附属功能
- 1.自动识别验证码（未能实现，可以接打码机）<br />
+ 1.自动识别验证码（可以接打码机）<br />
  2.自动收、发短信（已实现）<br />
  3.自动收、发邮件（发已实现，收已实现一半）<br />
-# 要求
- 1.切换浏览器User-Agent（没有实现）<br />
- 2.切换代理IP（没有实现）<br />
+ 4.切换浏览器User-Agent（没有实现）<br />
+ 5.切换代理IP（没有实现）<br />
 # 技术
  1.Java 1.8.0<br />
  2.Selenium 3.5.1、WebDriver 2<br />
  3.phantomjsdriver 1.4.0 <br />
  4.eclipse:Neon.3 Release (4.6.3) <br />
 # 展望
- 1.添加其他网站<br />
- 2.TimeSleep可以实现嵌入，非入侵代码<br />
- 3.可以使用cucumber-jvm进行驱动开发<br />
+ 1.可以使用cucumber-jvm进行驱动开发<br />

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.core.AssembleProperties;
+import com.ant.auto.util.KillProcess;
 import com.ant.auto.util.SleepUtil;
 
 public class ToutiaoMain {
@@ -41,9 +42,8 @@ public class ToutiaoMain {
 			}
 			logger.info(map.get(Constants.USERNAME_STR) + " 已经完成任务。");
 			SleepUtil.sleepByMinute(3, 5);
-			driver.quit();
+			KillProcess.quit(driver);
 		}
-		driver.quit();
-		driver.close();
+		KillProcess.quit(driver);
 	}
 }

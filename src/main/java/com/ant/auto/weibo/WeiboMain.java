@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.core.AssembleProperties;
+import com.ant.auto.util.KillProcess;
 
 /**
  * 发微博 关注用户 超话签到等
@@ -42,10 +43,9 @@ public class WeiboMain {
 				driver = WeiboSearchAndFollow.followSuperTalk(driver);
 				//签到超话
 				driver = WeiboSearchAndFollow.signUpSuperTalk(driver);
-				driver.quit();
+				KillProcess.quit(driver);
 			}
 		}
-		driver.quit();
-		driver.close();
+		KillProcess.quit(driver);
 	}
 }

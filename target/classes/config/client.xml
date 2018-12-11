@@ -3,11 +3,11 @@
 <properties>
 	<driver>
 		<chrome>
-			<use>true</use>
-			<mobile>iPhone 6</mobile>
+			<use>false</use>
+			<mobile></mobile>
 		</chrome>
 		<firefox>
-			<use>false</use>
+			<use>true</use>
 			<option>new</option>
 		</firefox>
 		<opera>
@@ -26,22 +26,24 @@
 	</browser_dir>
 
 	<baidu>
-        <account>xxx----xxx</account>
-        <account>xxx----xxx</account>
+		<account>xxx----xxx</account>
 	</baidu>
 
 	<weibo>
-        <account>xxx----xxx</account>
-        <account>xxx----xxx</account>
-	</weibo>
-
-	<qq>
 		<account>xxx----xxx</account>
-	</qq>
+	</weibo>
 	
 	<tianya>
 		<account>xxx----xxx</account>
 	</tianya>
+	
+	<qq>
+		<account>xxx----xxx</account>
+	</qq>
+	
+	<taobao>
+	    <account>xxx----xxx</account>
+	</taobao>
 	
 	<weibo_target>
 		<account>SNH48-陈思----#陈思#</account>

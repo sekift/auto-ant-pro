@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.core.AssembleProperties;
+import com.ant.auto.util.KillProcess;
 
 public class BaiduMain {
 	public static void main(String args[]) {
@@ -18,9 +19,8 @@ public class BaiduMain {
 			driver = AssembleBrowserFactory.getBrower();
 			//BaiduSignUp.signUpRun(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
 			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
-			driver.quit();
+			KillProcess.quit(driver);
 		}
-		driver.quit();
-		driver.close();
+		KillProcess.quit(driver);
 	}
 }

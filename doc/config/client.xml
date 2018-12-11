@@ -3,11 +3,11 @@
 <properties>
 	<driver>
 		<chrome>
-			<use>true</use>
-			<mobile>iPhone 6</mobile>
+			<use>false</use>
+			<mobile></mobile>
 		</chrome>
 		<firefox>
-			<use>false</use>
+			<use>true</use>
 			<option>new</option>
 		</firefox>
 		<opera>
@@ -24,6 +24,30 @@
 		<opera_driver_dir>D:/selenium/operadriver.exe</opera_driver_dir>
 		<opera_browser_dir>D:/Program Files/Opera/launcher.exe</opera_browser_dir>
 	</browser_dir>
+
+	<baidu>
+		<account>xxx----xxx</account>
+	</baidu>
+
+	<weibo>
+		<account>xxx----xxx</account>
+	</weibo>
+	
+	<tianya>
+		<account>xxx----xxx</account>
+	</tianya>
+	
+	<qq>
+		<account>xxx----xxx</account>
+	</qq>
+	
+	<taobao>
+	    <account>xxx----xxx</account>
+	</taobao>
+	
+	<weibo_target>
+		<account>SNH48-陈思----#陈思#</account>
+	</weibo_target>
 
 	<toutiao_target>
 		<account>尴尬癌专治</account>

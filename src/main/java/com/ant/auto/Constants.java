@@ -17,7 +17,8 @@ public class Constants {
 	//配置关键字
 	public static final String USERNAME_STR = "username"; 
 	public static final String PASSWORD_STR = "password"; 
-
+	
+	public static final String TAOBAO_STR = "taobao"; 
 	public static final String TIANYA_STR = "tianya"; 
 	public static final String BAIDU_STR = "baidu"; 
 	public static final String WEIBO_STR = "weibo"; 
