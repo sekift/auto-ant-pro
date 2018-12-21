@@ -30,6 +30,7 @@ public class TianyaLogin {
 		S.s1();
 	    
 	    driver.findElement(By.id("sign")).click();
+	    S.s1();
 	    driver.findElement(By.id("vwriter")).clear();
 	    driver.findElement(By.id("vwriter")).sendKeys(username);
 	    S.s1();

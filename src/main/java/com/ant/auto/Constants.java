@@ -52,6 +52,8 @@ public class Constants {
 	public static final int SHARE_QQ = 2;
 	
 	// 模拟停留时间，控制速度，分3档：1-5，5-10，10-20；单位为秒s
+	public static final int SPEED_ZER_MIN = 0;
+	public static final int SPEED_ZER_MAX = 1;
 	public static final int SPEED_ONE_MIN = 1;
 	public static final int SPEED_ONE_MAX = 3;
 	public static final int SPEED_TWO_MIN = 5;

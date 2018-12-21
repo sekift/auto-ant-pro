@@ -20,10 +20,10 @@ public class KillProcess {
 	
 	public static void quit(WebDriver driver){
 		try {
-			kill();
 			if(driver != null){
 				driver.quit();
 			}
+			kill();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,11 +1,14 @@
 package com.ant.auto.taobao;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.core.WebDriverOperate;
+import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.S;
 
 /**
@@ -24,40 +27,27 @@ public class TaobaoLogin {
 
 	public static WebDriver taobaoLogin(String username, String password,
 			WebDriver driver) {
-		//driver.manage().window().setSize(new Dimension(700, 800));
+		driver.manage().window().maximize();
+		S.s1();
 		driver.navigate().to(taobaoLoginUrl);
-		S.s2();
-		driver.findElement(By.id("TPL_username_1")).sendKeys("许");//
 		S.s1();
-		driver.findElement(By.id("TPL_username_1")).sendKeys("少");//
+		driver.findElement(By.id("J_Quick2Static")).click();//切换
 		S.s1();
-		driver.findElement(By.id("TPL_username_1")).sendKeys("是");//
+		driver.findElement(By.id("TPL_username_1")).sendKeys(username);
 		S.s1();
-		driver.findElement(By.id("TPL_username_1")).sendKeys("大");//
+		driver.findElement(By.id("TPL_password_1")).sendKeys(password);
 		S.s1();
-		driver.findElement(By.id("TPL_username_1")).sendKeys("x");//
-		S.s2();
-		driver.findElement(By.id("TPL_username_1")).sendKeys(Keys.TAB);//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("s");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("x");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("k");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("x");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("t");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("1");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("23");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("4");//
-		S.s1();
-		driver.findElement(By.id("TPL_password_1")).sendKeys("x");//
+		
+		// nc-lang-cnt 请按住滑块，拖动到最右边 滑块破解，如果有的话就要做
+		WebElement dragger = WebDriverOperate.getWebElement(driver, WebElementType.Class.toString(), "nc-lang-cnt");
+		if (null != dragger) {
+		    Actions actions = new Actions(driver);
+			//开始拖动：
+		    for(int i=0;i<1;i++){
+		        actions.dragAndDropBy(dragger, 300, 0).perform();
+		        S.s1();
+		    }
+		}
 		S.s1();
 		driver.findElement(By.id("J_SubmitStatic")).click();//
 		S.s2();

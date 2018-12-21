@@ -9,6 +9,13 @@ import com.ant.auto.Constants;
  */
 public class S {
 	/*
+	 * 第零档
+	 */
+	public static void s0() {
+		SleepUtil.sleepBySecond(Constants.SPEED_ZER_MIN, Constants.SPEED_ZER_MAX);
+	}
+	
+	/*
 	 * 第一档
 	 */
 	public static void s1() {
