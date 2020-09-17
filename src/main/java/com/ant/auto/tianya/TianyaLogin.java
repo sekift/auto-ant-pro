@@ -20,13 +20,13 @@ public class TianyaLogin {
 	    driver.get(baseUrl + "/register/default.jsp?fowardURL=" + TianyaZan.hotUrl);
 	    
 	    Actions actions = new Actions(driver);
-		actions.moveByOffset(154, 223).click().build().perform();// 点击
+		actions.moveByOffset(154, 20).click().build().perform();// 点击
 		S.s1();
-		actions.moveByOffset(322, 445).click().build().perform();// 点击
+		actions.moveByOffset(322, 115).click().build().perform();// 点击
 		S.s1();
-		actions.moveByOffset(523, 660).click().build().perform();// 点击
+		actions.moveByOffset(123, 82).click().build().perform();// 点击
 		S.s1();
-		actions.moveByOffset(714, 620).click().build().perform();// 点击
+		actions.moveByOffset(21, 220).click().build().perform();// 点击
 		S.s1();
 	    
 	    driver.findElement(By.id("sign")).click();

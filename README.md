@@ -3,11 +3,11 @@
 
 # 开始使用<br />
 1.从git拉Maven项目到本地（或者直接下载zip包），然后导入eclipse。<br />
-2.下载相匹配的driver（可将项目driver文件里的解压，也可以到https://www.seleniumhq.org/ 选择下面的版本下载）和浏览器（到各自浏览器网址下载），版本不要相差太大，避免不兼容。<br />
+2.下载相匹配的driver（可将项目driver文件里的解压，也可以到https://www.selenium.dev/ 选择下面的版本下载）和浏览器（到各自浏览器网址下载），版本不要相差太大，避免不兼容。<br />
 2.1 chrome<br />
  chrome版本：67.0.3396.99；driver版本：2.36.540470 <br />
 2.2 firefox<br />
- firefox版本：49.0.2；geckodriver版本：0.18.0<br />
+ firefox版本：49.0.2；geckodriver版本：0.18.0 <br />
 2.3 opera<br />
  opera版本：54.0.2952.51；operadriver版本：2.37<br />
 3.修改配置<br />
@@ -40,6 +40,13 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 6.4 淘宝：TaobaoMain；直接运行。<br />
 
 # 更新<br />
+2020/09/18 更新 <br />
+1.firefox升级到80.0.1，相应geckdrive升级到0.27.0 (可以到 https://github.com/mozilla/geckodriver 下载)。<br />
+2.chrome升级到85.0.4183.102（正式版本），相应的的driver版本不变。<br />
+3.opera升级到71.0.3770.148，相应的operadriver版本不变，<br />
+4.某站点击跳出屏幕修复。<br />
+5.头条QQ登录跳转改版BUG修复，QQ登录增加了拖动验证码，择日修复。<br />
+
 2018/12/21 更新 <br />
 1.优化强行杀死driver进程。<br />
 2.破解淘宝滑块验证，不限浏览器。<br />

@@ -19,7 +19,7 @@ import com.ant.auto.util.S;
  */
 public class ToutiaoLogin {
 	private static final Logger logger = LoggerFactory.getLogger(ToutiaoLogin.class);
-	private static final String toutiaoUrl = "http://www.toutiao.com";
+	private static final String toutiaoUrl = "http://www.toutiao.com";	
 
 	/**
 	 * 头条登录 type的作用是区分微博还是qq：1 微博，2 qq
@@ -36,19 +36,19 @@ public class ToutiaoLogin {
 		// 点击跳到登录
 		// driver.findElement(By.cssSelector("div.nav-login > a")).click();// >
 		// span
-		driver.findElement(By.linkText("登录")).click();
 		/**
 		 * 1再点击去到具体微博/qq登录授权登录 2使用手机或者邮箱可能需要验证码
 		 */
 		S.s1();
 		if (Constants.SHARE_WEIBO == type) {
+			driver.findElement(By.linkText("登录")).click();
 			// 微博
 			driver.findElement(By.cssSelector("li.sns.weibo-login")).click();
 			S.s1();
 			driver = weiboOauth(username, password, driver);
 		} else if (Constants.SHARE_QQ == type) {
 			// qq Firefox（49.0.2）下有问题，跳不转 原因是js加载错误
-			driver.findElement(By.cssSelector("li.sns.qq-login")).click();
+			driver.findElement(By.cssSelector(".qq")).click();
 			S.s1();
 			driver = qqOauth(username, password, driver);
 		}
