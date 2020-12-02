@@ -6,7 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class AimeAdCreateTest {
-    private static final String TEST_URL = "http://oms-front-end.aam.test/create/advertising-creativity";
+    private static final String TEST_URL = AimeMain.BASE_URL+"/create/advertising-creativity";
 
     public static WebDriver test(WebDriver driver){
         driver.navigate().to(TEST_URL);

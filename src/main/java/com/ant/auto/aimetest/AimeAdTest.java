@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.Select;
  * @description:
  */
 public class AimeAdTest {
-    private static final String TEST_URL = "http://oms-front-end.aam.test/create/advertising-test";
+    private static final String TEST_URL = AimeMain.BASE_URL+"/create/advertising-test";
     /**
      * 投放测试
      * @param driver

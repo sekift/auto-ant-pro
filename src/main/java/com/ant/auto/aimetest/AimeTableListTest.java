@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class AimeTableListTest {
 
-    private static final String TEST_URL = "http://oms-front-end.aam.test/list/table-list";
+    private static final String TEST_URL = AimeMain.BASE_URL+"/list/table-list";
 
     public static WebDriver test(WebDriver driver){
         driver.navigate().to(TEST_URL);

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class AimeAdvertisingTest {
 
-    private static final String TEST_URL = "http://oms-front-end.aam.test/create/advertising";
+    private static final String TEST_URL = AimeMain.BASE_URL+"/create/advertising";
 
     public static WebDriver test(WebDriver driver) {
         driver.navigate().to(TEST_URL);
@@ -32,7 +32,7 @@ public class AimeAdvertisingTest {
         S.s1();
         driver.findElement(By.xpath("(//input[@value=''])[2]")).click();
         S.s1();
-        driver.findElement(By.xpath("(//input[@value=''])[16]")).click();
+        driver.findElement(By.xpath("(//input[@value=''])[10]")).click();
         S.s1();
         ((JavascriptExecutor) driver).executeScript("scrollTo(400, 800)");
         S.s1();

@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class AimeSwaggerTest {
 
     //PC端地址
-    private static final String SWAGGER_TEST_URL = "http://oms-back-end.aam.test/swagger-ui.html";
+    private static final String SWAGGER_TEST_URL = AimeMain.BASE_URL+"/swagger-ui.html";
 
     /**
      * 简单测试
