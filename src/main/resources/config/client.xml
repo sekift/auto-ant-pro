@@ -18,8 +18,8 @@
 
 	<browser_dir>
 		<chrome_dir>D:/selenium/chromedriver.exe</chrome_dir>
-		<firefox_gecko_dir>D:/selenium/geckodriver.exe</firefox_gecko_dir>
-		<firefox_browser_dir>D:/Program Files (x86)/Mozilla Firefox/firefox.exe</firefox_browser_dir>
+		<firefox_gecko_dir>F:/selenium/geckodriver.exe</firefox_gecko_dir>
+		<firefox_browser_dir>C:/Program Files/Mozilla Firefox/firefox.exe</firefox_browser_dir>
 		<firefox_old_browser_dir>D:/Program Files/Mozilla Firefox/firefox.exe</firefox_old_browser_dir>
 		<opera_driver_dir>D:/selenium/operadriver.exe</opera_driver_dir>
 		<opera_browser_dir>D:/Program Files/Opera/launcher.exe</opera_browser_dir>

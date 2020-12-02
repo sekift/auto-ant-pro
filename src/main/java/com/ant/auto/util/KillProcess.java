@@ -61,20 +61,6 @@ public class KillProcess {
 					System.out.println(pid + "-----------------");
 					Runtime.getRuntime().exec("tskill " + pid);
 				}
-
-				 /**
-				  * 浏览器由原quit退出
-				  * if (temp.contains("firefox.exe")) {
-				 temp = temp.replaceAll(" +"," ");
-				 System.out.println(temp);
-				 temp = temp.replaceAll("firefox.exe ","");
-				 int t1 = temp.indexOf(" ");
-				 temp = temp.substring(0, t1);
-				 // 获得pid
-				 String pid = temp;
-				 System.out.println(pid+"-----------------");
-				 Runtime.getRuntime().exec("tskill " + pid);
-				 }*/
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
