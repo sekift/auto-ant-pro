@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class AimeMain {
 
-    public static final String UAT_BASE_URL = "http://oms-front-end.aam.test";
+    public static final String UAT_INSIDE_BASE_URL = "http://oms-front-end-inside.aam.test";
+    public static final String UAT_OUTSIDE_BASE_URL = "http://oms-front-end-outside.aam.test";
     public static final String DEV_BASE_URL = "http://10.0.2.137:8000";
 
     public static final String BASE_URL = DEV_BASE_URL;
