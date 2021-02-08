@@ -63,5 +63,6 @@
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
     <orderEntry type="library" name="Maven: com.codeborne:phantomjsdriver:1.4.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.53" level="project" />
   </component>
 </module>

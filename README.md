@@ -40,6 +40,10 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
 6.4 淘宝：TaobaoMain；直接运行。<br />
 
 # 更新<br />
+2021/02/08 更新 <br />
+1.实现使用JSON文件驱动测试。<br />
+2.验证各浏览器的适用性。<br />
+
 2020/09/18 更新 <br />
 1.firefox升级到80.0.1，相应geckdrive升级到0.27.0 (可以到 https://github.com/mozilla/geckodriver 下载)。<br />
 2.chrome升级到85.0.4183.102（正式版本），相应的的driver版本不变。<br />
