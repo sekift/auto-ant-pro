@@ -17,7 +17,7 @@ public class BaiduLogin {
 	private static final Logger logger = LoggerFactory
 			.getLogger(BaiduLogin.class);
 
-	private static final String baiduLoginUrl = "https://wappass.baidu.com/passport/?"
+	private static final String BAIDU_LOGIN_URL = "https://wappass.baidu.com/passport/?"
 			+ "login&tpl=wimn&ssid%3D0%26amp%3B"
 			+ "from%3D844b%26amp%3Buid%3D%26amp%3Bpu%3Dsz%25401320_2001%252Cta%2540"
 			+ "iphone_1_11.0_3_602%26amp%3Bbd_page_type%3D1&tn=&regtype=1"
@@ -25,8 +25,7 @@ public class BaiduLogin {
 
 	public static WebDriver baiduLogin(String username, String password,
 			WebDriver driver) {
-		//driver.manage().window().setSize(new Dimension(700, 800));
-		driver.navigate().to(baiduLoginUrl);
+		driver.navigate().to(BAIDU_LOGIN_URL);
 		S.s1();
 		driver.findElement(By.id("login-username")).sendKeys(username);
 		S.s1();
@@ -38,6 +37,7 @@ public class BaiduLogin {
 		// 可能的手机、邮箱或钱包绑定银行卡验证（开启登录保护才有）
 		try {
 			WebElement we = driver.findElement(By.partialLinkText("跳过"));
+			//noinspection EqualsBetweenInconvertibleTypes
 			if (we != null && !"".equals(we)) {
 				we.click();
 			}

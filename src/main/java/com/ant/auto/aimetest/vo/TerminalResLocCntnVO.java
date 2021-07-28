@@ -1,7 +1,7 @@
 package com.ant.auto.aimetest.vo;
 
 /**
- * @author: yinzhang.lu
+ * @author: sekift
  * @date: 2020/12/09 17:45
  * @description: 接口测试VO
  */

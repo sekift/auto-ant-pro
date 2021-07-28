@@ -17,16 +17,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * reload files class
+ *
+ * @author sekift
  */
-@SuppressWarnings({"unchecked"})
 public abstract class ReloadableProperties {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 			
-	private static ScheduledExecutorService service = ThreadPools.newScheduledExecutorService(1, "ReloadThread(AbstractReloadableProperties)");
+	private static ScheduledExecutorService service = ThreadPools.newScheduledExecutorService(1,
+			"ReloadThread(AbstractReloadableProperties)");
  
-	protected Map<String, Object> props = new ConcurrentHashMap<String, Object>(100);
+	protected Map<String, Object> props = new ConcurrentHashMap<>(100);
 	
 	private URL src = null;
 	
@@ -53,10 +54,14 @@ public abstract class ReloadableProperties {
 	}
 		
 	protected abstract URL getSourceURL();
-	
-	//default 15s
+
+	/**
+	 * default 15s
+	 *
+	 * @return
+	 */
 	protected long getScanInterval() {		
-		return 15 * 1000l;
+		return 15 * 1000L;
 	}
 	
 	@SuppressWarnings({"rawtypes"})
@@ -76,40 +81,29 @@ public abstract class ReloadableProperties {
 		if ("file".equals(protocol)) { 
 			targetSrc = new File(src.getPath()); 
 			lastModifiedTime = targetSrc.lastModified();
-			FileInputStream fin = null;
-			try {
-				fin = new FileInputStream(targetSrc);
+			try (FileInputStream fin = new FileInputStream(targetSrc)) {
 				props = reload(fin, props);
 			} catch (Exception iex) {
 				throw new RuntimeException("Reload properties exception", iex);
-			} finally {
-				if (null != fin) {
-					try { fin.close(); } catch (Exception ioex) { }
-				}
 			}
 		} else if ("jar".equals(protocol)) {
 			String[] info = src.getPath().split("\\!");
 			targetSrc = new File(info[0].substring(5)); 
 			lastModifiedTime = targetSrc.lastModified();
-			JarFile jf = null;
-			try {
-				jf = new JarFile(targetSrc, false, ZipFile.OPEN_READ);
+			try (JarFile jf = new JarFile(targetSrc, false, ZipFile.OPEN_READ)) {
 				ZipEntry ze = jf.getEntry(info[1].substring(1));
 				jarLastModifiedTime = ze.getTime();
 				props = reload(jf.getInputStream(ze), props);
 			} catch (Exception ex) {
 				throw new RuntimeException("Create jar file exception", ex);
-			} finally {
-				if (null != jf) {
-					try { jf.close(); } catch (IOException e) { }
-				}
 			}
 		}
 			
 		long interval = getScanInterval();
 		
 		Runnable task = new Runnable() {
-			public void run() { 
+			@Override
+			public void run() {
 				try {  
 					long lmt = targetSrc.lastModified(); 
 					if (0 == lmt) {
@@ -121,25 +115,17 @@ public abstract class ReloadableProperties {
 						logger.debug("The properties is change[{}]", targetSrc); 	
 						if ("file".equals(protocol)) { 
 							logger.debug("Use the filesystem to load properties direct");
-							FileInputStream fin = null;
-							try {
-								fin = new FileInputStream(targetSrc);
+							try (FileInputStream fin = new FileInputStream(targetSrc)) {
 								logger.debug("Use file stream, reload the properties begin...");
 								props = reload(fin, props);
 								logger.debug("Use file stream, reload the properties over");
 							} catch (Exception iex) {
 								logger.error("Reload properties exception, iex:{}", iex);
-							} finally {
-								if (null != fin) {
-									try { fin.close(); } catch (Exception ioex) { }
-								}
 							}
 						} else if ("jar".equals(protocol)) {
 							logger.debug("Use jar to load properties");
 							String[] info = src.getPath().split("\\!");
-							JarFile jf = null;
-							try {
-								jf = new JarFile(targetSrc, false, ZipFile.OPEN_READ);
+							try (JarFile jf = new JarFile(targetSrc, false, ZipFile.OPEN_READ)) {
 								ZipEntry ze = jf.getEntry(info[1].substring(1));
 								long jlmt = ze.getTime();
 								if (jarLastModifiedTime < jlmt || 0 == jarLastModifiedTime) {
@@ -150,10 +136,6 @@ public abstract class ReloadableProperties {
 								}
 							} catch (Exception ex) {
 								throw new RuntimeException("Create jar file exception", ex);
-							} finally {
-								if (null != jf) {
-									try { jf.close(); } catch (IOException e) { }
-								}
 							}
 						}
 					}

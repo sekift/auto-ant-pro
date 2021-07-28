@@ -6,8 +6,8 @@ import java.net.URLEncoder;
 import java.util.regex.Pattern;
 
 /**
- * 提供字符串相关处理的一些方法。
- * 
+ *
+ * @author sekift
  */
 public class StringUtil {
 	
@@ -97,7 +97,7 @@ public class StringUtil {
 	 */
 	public static boolean isBlank(String value) {
 		boolean ret = false;
-		if (value != null && value.equals("")) {
+		if (value != null && "".equals(value)) {
 			ret = true;
 		}
 		return ret;
@@ -244,7 +244,8 @@ public class StringUtil {
 		boolean toCapitalize = false;
 		for (int i = 0; i < str.length(); i++) {
 			char c = str.charAt(i);
-			if (c >= 'a' && c <= 'z' || c >= '0' && c <= '9') {
+			boolean flag = (c >= 'a' && c <= 'z' || c >= '0' && c <= '9');
+			if (flag) {
 				if (toCapitalize) {
 					result.append(Character.toUpperCase(c));
 					toCapitalize = false;

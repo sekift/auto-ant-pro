@@ -3,7 +3,10 @@ package com.ant.auto.aimetest;
 import com.ant.auto.util.S;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+/**
+ *
+ * @author sekift
+ */
 public class AimeLogin {
     private static final String BASE_URL = AimeMain.BASE_URL;
 

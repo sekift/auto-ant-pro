@@ -4,7 +4,10 @@ import com.ant.auto.util.S;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
+/**
+ *
+ * @author sekift
+ */
 public class AimeAdvertisingTest {
 
     private static final String TEST_URL = AimeMain.BASE_URL+"/create/advertising";

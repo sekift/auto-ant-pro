@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.core.AssembleProperties;
 import com.ant.auto.util.KillProcess;
@@ -16,33 +16,33 @@ import com.ant.auto.util.KillProcess;
  *
  */
 public class WeiboMain {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		WebDriver driver = null;
-		List<Map<String, String>> list = AssembleProperties.loadProString(Constants.WEIBO_STR, Constants.ACCOUNT_STR);
+		List<Map<String, String>> list = AssembleProperties.loadProString(Consts.WEIBO_STR, Consts.ACCOUNT_STR);
 
-		List<Map<String, String>> targetList = AssembleProperties.loadProString(Constants.WEIBO_TARGET_STR,
-				Constants.ACCOUNT_STR);
+		List<Map<String, String>> targetList = AssembleProperties.loadProString(Consts.WEIBO_TARGET_STR,
+				Consts.ACCOUNT_STR);
 
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowserFactory.getBrower();
 			//先登录
-			driver = WeiboLogin.weiboLogin(map.get(Constants.USERNAME_STR),
-					 map.get(Constants.PASSWORD_STR), driver);
+			WeiboLogin.weiboLogin(map.get(Consts.USERNAME_STR),
+					map.get(Consts.PASSWORD_STR), driver);
 			//发微博
 			//WeiboSend.sendTweet(driver);
 			for (Map<String, String> targetMap : targetList) {
-				String user = targetMap.get(Constants.USERNAME_STR);
-				String superTalk = targetMap.get(Constants.PASSWORD_STR);
+				String user = targetMap.get(Consts.USERNAME_STR);
+				String superTalk = targetMap.get(Consts.PASSWORD_STR);
 				//查找用户
-				driver = WeiboSearchAndFollow.searchUser(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver, user);
+				WeiboSearchAndFollow.searchUser(map.get(Consts.USERNAME_STR), map.get(Consts.PASSWORD_STR), driver, user);
 				//关注用户
-				driver = WeiboSearchAndFollow.followUser(driver);
+				WeiboSearchAndFollow.followUser(driver);
 				//查找超话
-				driver = WeiboSearchAndFollow.searchSuperTalk(driver, superTalk);
+				WeiboSearchAndFollow.searchSuperTalk(driver, superTalk);
 				//关注超话
-				driver = WeiboSearchAndFollow.followSuperTalk(driver);
+				WeiboSearchAndFollow.followSuperTalk(driver);
 				//签到超话
-				driver = WeiboSearchAndFollow.signUpSuperTalk(driver);
+				WeiboSearchAndFollow.signUpSuperTalk(driver);
 				KillProcess.quit(driver);
 			}
 		}

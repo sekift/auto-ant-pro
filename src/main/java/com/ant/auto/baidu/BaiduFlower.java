@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.core.AssembleProperties;
 import com.ant.auto.util.JsoupUtil;
 import com.ant.auto.util.S;
@@ -26,7 +26,13 @@ public class BaiduFlower {
 	private static final Logger logger = LoggerFactory
 			.getLogger(BaiduFlower.class);
 
-	// 百度送花
+	/**
+	 * 百度送花
+	 *
+	 * @param username
+	 * @param password
+	 * @param driverPre
+	 */
 	public static void sendFlower(String username, String password,
 			WebDriver driverPre) {
 		WebDriver driver = BaiduLogin.baiduLogin(username, password, driverPre);
@@ -34,15 +40,17 @@ public class BaiduFlower {
 		Navigation navigation = driver.navigate();
 		// 多个对象
 		List<Map<String, String>> list = AssembleProperties.loadProString(
-				Constants.BAIDU_FLOWER_STR, Constants.URL_STR);
+				Consts.BAIDU_FLOWER_STR, Consts.URL_STR);
 		for (Map<String, String> map : list) {
-			navigation.to(map.get(Constants.USERNAME_STR));// 手机端
+			// 手机端
+			navigation.to(map.get(Consts.USERNAME_STR));
 			S.s1();
 			// 滚动
 			// 2018.4.5 改版已经不用滚动,改成跳转到页面后再点了
 			// ((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
-			int maxCount = Integer.valueOf(map.get(Constants.PASSWORD_STR));
-			if (maxCount > 0) {// 大于0才执行
+			int maxCount = Integer.valueOf(map.get(Consts.PASSWORD_STR));
+			// 大于0才执行
+			if (maxCount > 0) {
 				driver.findElement(By.id("J-send-flower")).click();
 				// 点击送花，每天一共只可以送3次，所以下面是按需分配给每一个小偶像
 				// 获取lemmaid

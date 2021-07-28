@@ -6,13 +6,13 @@ import com.ant.auto.util.S;
 import org.openqa.selenium.WebDriver;
 
 /**
- * @author: yinzhang.lu
+ * @author: sekift
  * @date: 2020/11/10 13:50
  * @description: 简单的Test，测试swagger能不能行
  */
 public class AimeSwaggerTest {
 
-    //PC端地址
+    /**PC端地址*/
     private static final String SWAGGER_TEST_URL = AimeMain.BASE_URL+"/swagger-ui.html";
 
     /**
@@ -22,7 +22,8 @@ public class AimeSwaggerTest {
         driver.manage().window().maximize();
         S.s1();
         driver.navigate().to(SWAGGER_TEST_URL);
-        int count = 10; // 检测次数
+        // 检测次数
+        int count = 10;
         for(int i=1;i<=count;i++){
             S.s2();
             driver.navigate().refresh();

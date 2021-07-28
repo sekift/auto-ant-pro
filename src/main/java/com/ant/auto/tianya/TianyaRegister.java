@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SendMessageTool;
 import com.ant.auto.util.SleepUtil;
-
+/**
+ *
+ * @author sekift
+ */
 public class TianyaRegister {
 	public static void main(String[] args) {
 		WebDriver driver = AssembleBrowserFactory.getBrower();

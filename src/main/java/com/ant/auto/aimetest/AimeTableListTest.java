@@ -6,7 +6,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
+/**
+ *
+ * @author sekift
+ */
 public class AimeTableListTest {
 
     private static final String TEST_URL = AimeMain.BASE_URL+"/list/table-list";

@@ -17,9 +17,10 @@ import java.util.Set;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
- 
+
 /**
- * Xml Util
+ *
+ * @author sekift
  */
 @SuppressWarnings({"unchecked","rawtypes"})
 public class XmlUtil {
@@ -59,8 +60,8 @@ public class XmlUtil {
 		String name = elem.getName();
 		Object obj = container.get(name);
 		if (null != obj) {
-			if (!List.class.isInstance(obj)) { 
-				List<Object> newBean = new LinkedList<Object>();
+			if (!(obj instanceof List)) {
+				List<Object> newBean = new LinkedList<>();
 				newBean.add(obj);
 				container.put(name, newBean);
 				generateMap(container, elem);
@@ -100,14 +101,13 @@ public class XmlUtil {
 		}
 		StringBuilder result = new StringBuilder();
 		result.append("<?xml version=\"1.0\" encoding=\"utf-8\" ?><dataset>");
-		Iterator it = rowList.iterator();
-		while(it.hasNext()){
+		for (Object o : rowList) {
 			result.append("<row>");
-			Map map = (Map)it.next();
+			Map map = (Map) o;
 			Set<Map.Entry> entrys = map.entrySet();
-			for(Map.Entry entry:entrys){
-				result.append("<"+entry.getKey()+"><![CDATA["+entry.getValue()
-						+"]]></"+entry.getKey()+">");
+			for (Map.Entry entry : entrys) {
+				result.append("<").append(entry.getKey()).append("><![CDATA[").append(entry.getValue())
+						.append("]]></").append(entry.getKey()).append(">");
 			}
 			result.append("</row>");
 		}
@@ -122,11 +122,10 @@ public class XmlUtil {
 
 	@Deprecated
 	public static String getErrorXml(String errorMsg){
-		StringBuilder result = new StringBuilder();
-		result.append("<?xml version=\"1.0\" encoding=\"utf-8\" ?><error_msg><![CDATA[");
-		result.append(errorMsg);
-		result.append("]]></error_msg>");
-		return result.toString();
+		String result = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><error_msg><![CDATA[" +
+				errorMsg +
+				"]]></error_msg>";
+		return result;
 	}
 	
 	@Deprecated
@@ -157,7 +156,7 @@ public class XmlUtil {
 		} else {
 			comp = new ElementStringComparator(fieldSortBy, inc);
 		}
-		Collections.sort(rowList, comp);
+		rowList.sort(comp);
     }	
 	
 	@Deprecated
@@ -170,7 +169,8 @@ public class XmlUtil {
     		this.inc = inc;
     	}
 
-    	public int compare(Object o1, Object o2) {
+    	@Override
+		public int compare(Object o1, Object o2) {
     		String f1 = (String)((Map)o1).get(fieldName);
     		String f2 = (String)((Map)o2).get(fieldName);
     		int if1 = 0;
@@ -204,7 +204,8 @@ public class XmlUtil {
     		this.inc = inc;
     	}
 
-    	public int compare(Object o1, Object o2) {
+    	@Override
+		public int compare(Object o1, Object o2) {
     		String f1 = (String)((Map)o1).get(fieldName);
     		String f2 = (String)((Map)o2).get(fieldName);
     		int result = f1.compareToIgnoreCase(f2);

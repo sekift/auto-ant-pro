@@ -1,12 +1,16 @@
 package com.ant.auto.baidu;
 
+import com.ant.auto.util.S;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.JsoupUtil;
 import com.ant.auto.util.SleepUtil;
-
+/**
+ *
+ * @author sekift
+ */
 public class BaiduTest {
 
 	public static void main(String[] args) {
@@ -49,7 +53,7 @@ public class BaiduTest {
 		driver.findElement(By.xpath("//*[@id='kw']")).sendKeys(Keys.CONTROL,Keys.SHIFT
 				,"i");
 		*/
-		SleepUtil.sleepBySecond(15, 27);
+		S.s3();
 		driver.quit();
 	}
 }

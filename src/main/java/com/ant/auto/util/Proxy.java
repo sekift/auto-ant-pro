@@ -7,14 +7,17 @@ package com.ant.auto.util;
 import java.io.Serializable;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
-
+/**
+ *
+ * @author sekift
+ */
 public class Proxy implements Delayed, Serializable {
 	private static final long serialVersionUID = -6951864941257516031L;
 	
 	public final static int ERROR_403 = 403;
     public final static int ERROR_404 = 404;
-    public final static int ERROR_502 = 502;  // banned by website
-    public final static int ERROR_500 = 500;  // the proxy itself failed
+    public final static int ERROR_502 = 502;
+    public final static int ERROR_500 = 500;
     public final static int SUCCESS = 200;
 
     public int getStateCode() {
@@ -28,7 +31,7 @@ public class Proxy implements Delayed, Serializable {
     private String httpHost;
     private int port = 0;
 
-    private int reuseTimeInterval = 1500;// ms
+    private int reuseTimeInterval = 1500;
     private Long canReuseTime = 0L;
     private Long lastBorrowTime = System.currentTimeMillis();
     private Long responseTime = 0L;

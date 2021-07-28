@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 读取json文件
+ *
+ * @author sekift
  */
 public class JsonUtil {
 
@@ -23,7 +24,7 @@ public class JsonUtil {
      * @return
      */
     public static Map<String, List<JSONObject>> getJsonByName(String jsonName){
-        Map<String, List<JSONObject>> map = new HashMap<>();
+        Map<String, List<JSONObject>> map = new HashMap<>(4);
         try {
             String path = JsonUtil.class.getClassLoader().getResource("config/" + jsonName + ".json").getPath();
             String str = FileUtils.readFileToString(new File(path), Charset.defaultCharset());

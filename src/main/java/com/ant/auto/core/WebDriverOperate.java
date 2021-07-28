@@ -26,9 +26,8 @@ public class WebDriverOperate {
 	 * 
 	 * @param driver
 	 * @param windowTitle
-	 * @return
 	 */
-	public static WebDriver switchToWindow(WebDriver driver, String windowTitle, boolean full) {
+	public static void switchToWindow(WebDriver driver, String windowTitle, boolean full) {
 		try {
 			String currentHandle = driver.getWindowHandle();
 			Set<String> handles = driver.getWindowHandles();
@@ -54,7 +53,6 @@ public class WebDriverOperate {
 		} catch (NoSuchWindowException e) {
 			logger.error("窗口: " + windowTitle + " 未能找到！", e.fillInStackTrace());
 		}
-		return driver;
 	}
 
 	/**
@@ -69,8 +67,9 @@ public class WebDriverOperate {
 		Set<String> handles = dr.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		while (it.hasNext()) {
-			if (currentWindow == it.next())
+			if (currentWindow == it.next()) {
 				continue;
+			}
 			window = dr.switchTo().window(it.next());
 			return window;
 		}

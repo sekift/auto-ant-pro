@@ -22,6 +22,7 @@ import java.util.Set;
 public class HttpUtil {
 	// 支持的Http method
 	private static enum HttpMethod {
+		// 请求类型
 		POST, DELETE, GET, PUT, HEAD;
 	}
 

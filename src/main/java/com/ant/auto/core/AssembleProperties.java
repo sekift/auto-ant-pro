@@ -8,13 +8,13 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.util.ConfigUtil;
 
 /**
  * 装配配置
  * 
- * @author Administrator
+ * @author sekift
  * 
  */
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -25,13 +25,11 @@ public class AssembleProperties {
 	 * 多个map类型
 	 */
 	public static Map<String, String> loadProMap(String configValue){
-		Map map = (Map) ConfigUtil.getConfigValue(configValue);
-		return map;
+		return (Map) ConfigUtil.getConfigValue(configValue);
 	}
 	
 	public static Map<String, Map<String, String>> loadProMapMap(String configValue){
-		Map map = (Map) ConfigUtil.getConfigValue(configValue);
-		return map;
+		return (Map) ConfigUtil.getConfigValue(configValue);
 	}
 	
 	/**
@@ -43,8 +41,8 @@ public class AssembleProperties {
 	public static List<Map<String, String>> loadProString(String configValue,
 			String value) {
 		Map map = (Map) ConfigUtil.getConfigValue(configValue);
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		List<String> accountList = new ArrayList<String>();
+		List<Map<String, String>> list = new ArrayList<>();
+		List<String> accountList = new ArrayList<>();
 		// 如果account只有一个，那么
 		if (map != null && map.size() > 0) {
 			Object obj = map.get(value);
@@ -60,17 +58,17 @@ public class AssembleProperties {
 			logger.error("配置加载失败，请检查。");
 		}
 		try {
-			if (accountList != null && accountList.size() > 0) {
+			if (accountList.size() > 0) {
 				for (String str : accountList) {
-					Map<String, String> resultMap = new HashMap<String, String>();
+					Map<String, String> resultMap = new HashMap<>(8);
 					// 判断是否有密码
-					if (!str.contains(Constants.ACCOUNT_SEPARATOR)) {
-						resultMap.put(Constants.TARGET_STR, str);
+					if (!str.contains(Consts.ACCOUNT_SEPARATOR)) {
+						resultMap.put(Consts.TARGET_STR, str);
 					} else {
 						String[] mapArray = str
-								.split(Constants.ACCOUNT_SEPARATOR);
-						resultMap.put(Constants.USERNAME_STR, mapArray[0]);
-						resultMap.put(Constants.PASSWORD_STR, mapArray[1]);
+								.split(Consts.ACCOUNT_SEPARATOR);
+						resultMap.put(Consts.USERNAME_STR, mapArray[0]);
+						resultMap.put(Consts.PASSWORD_STR, mapArray[1]);
 					}
 					list.add(resultMap);
 				}

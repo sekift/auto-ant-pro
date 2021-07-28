@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author: yinzhang.lu
+ * @author: sekift
  * @date: 2020/12/09 10:15
  * @description:
  */
@@ -39,7 +39,7 @@ public class AimeAdTest {
         for(List<JSONObject> list : testJsonMap.values()){
             for(JSONObject object : list){
                 TerminalResLocCntnVO vo = JSON.parseObject(object.toJSONString(), TerminalResLocCntnVO.class);
-                driver = pageTest(driver, vo);
+                pageTest(driver, vo);
             }
         }
         return driver;
@@ -48,9 +48,8 @@ public class AimeAdTest {
     /**
      * 测试
      * @param driver
-     * @return
      */
-    public static WebDriver pageTest(WebDriver driver, TerminalResLocCntnVO vo){
+    public static void pageTest(WebDriver driver, TerminalResLocCntnVO vo){
         S.s1();
         driver.findElement(By.cssSelector(".ant-page-header-heading")).click();
         S.s0();
@@ -90,16 +89,15 @@ public class AimeAdTest {
         driver.findElement(By.name("resLocId")).sendKeys(Keys.DELETE);
         driver.findElement(By.name("resLocId")).sendKeys(vo.getResLocId().toString());
         S.s0();
-        AdvertisingTestSubmit(driver);
-        return driver;
+        advertisingTestSubmit(driver);
     }
 
     /**
      * 提交与后续动作
+     *
      * @param driver
-     * @return
      */
-    public static WebDriver AdvertisingTestSubmit(WebDriver driver) {
+    public static void advertisingTestSubmit(WebDriver driver) {
         driver.findElement(By.cssSelector(".ant-btn-primary")).click();
         S.s1();
         {
@@ -121,7 +119,6 @@ public class AimeAdTest {
         }
         S.s1();
         driver.findElement(By.cssSelector(".ant-btn:nth-child(2)")).click();
-        return driver;
     }
 
 

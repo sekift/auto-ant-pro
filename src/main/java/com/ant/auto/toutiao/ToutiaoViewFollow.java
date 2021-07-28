@@ -21,9 +21,10 @@ public class ToutiaoViewFollow {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ToutiaoViewFollow.class);
 
-	private static final String titlePro = "的头条主页";
+	/** 头条主页*/
+	private static final String TITLE_PRO = "的头条主页";
 
-	public static WebDriver viewFollow(WebDriver driver, String target) {
+	public static void viewFollow(WebDriver driver, String target) {
 		// 点入我的主页
 		//String userHeadSpanStr = "a.user-head > span";//
 		String userHeadSpanStr = "p.name > a > span";
@@ -37,7 +38,7 @@ public class ToutiaoViewFollow {
 		S.s1();
 
 		// 切换到新打开的窗口
-		driver = WebDriverOperate.switchToWindow(driver, userHead + titlePro, false);
+		WebDriverOperate.switchToWindow(driver, userHead + TITLE_PRO, false);
 		S.s1();
 		String number = driver.findElement(By.cssSelector(numberIStr))
 				.getText();
@@ -47,7 +48,7 @@ public class ToutiaoViewFollow {
 			logger.warn(userHead + " 此号没有关注人，请先关注。");
 
 			// 先转去搜索并关注
-			driver = searchAndFollow(driver, target, userHead + titlePro);
+			searchAndFollow(driver, target, userHead + TITLE_PRO);
 		}
 		S.s1();
 
@@ -62,7 +63,8 @@ public class ToutiaoViewFollow {
 		 * "//li[@id='table']/ul/li[3]/dl/dd[2]/a/h3")).click();
 		 * 
 		 */
-		int targetNum = 1; //默认第一个
+		//默认第一个
+		int targetNum = 1;
 		String pathPre = "//li[@id='table']/ul/li[";
 		String pathPro = "]/dl/dd[2]/a/h3";
 		for (int i = 1; i <= followSum; i++) {
@@ -78,18 +80,17 @@ public class ToutiaoViewFollow {
 		driver.findElement(By.xpath(pathPre + targetNum + pathPro)).click();
 
 		// 切换
-		driver = WebDriverOperate.switchToWindow(driver, target + titlePro, false);
-		return driver;
+		WebDriverOperate.switchToWindow(driver, target + TITLE_PRO, false);
 	}
 
 	/**
 	 * 没有关注的先搜索并关注，然后再返回自己的页面
-	 * 
+	 *
 	 * @param driver
-	 * @return
+	 * @param target
+	 * @param targetTitle
 	 */
-	public static WebDriver searchAndFollow(WebDriver driver, String target,
-			String targetTitle) {
+	public static void searchAndFollow(WebDriver driver, String target, String targetTitle) {
 		String searchTitle = "头条搜索";
 		driver.findElement(By.name("keyword")).click();
 		driver.findElement(By.name("keyword")).clear();
@@ -101,7 +102,7 @@ public class ToutiaoViewFollow {
 		driver.findElement(By.name("keyword")).sendKeys(Keys.ENTER);
 		S.s1();
 		//转到
-		driver = WebDriverOperate.switchToWindow(driver, searchTitle, false);
+		WebDriverOperate.switchToWindow(driver, searchTitle, false);
 		S.s1();
 		driver.findElement(By.cssSelector("div.subscribe.subscribe-active"))
 				.click();
@@ -110,10 +111,9 @@ public class ToutiaoViewFollow {
 		// driver.findElement(By.cssSelector("div.subscribe.")).click();
 		// 跳回去并刷新
 		S.s1();
-		driver = WebDriverOperate.switchToWindow(driver, targetTitle, false);
+		WebDriverOperate.switchToWindow(driver, targetTitle, false);
 		driver.navigate().refresh();
 		S.s1();
-		return driver;
 	}
 
 }

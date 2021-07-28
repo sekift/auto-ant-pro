@@ -17,7 +17,10 @@ import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ *
+ * @author sekift
+ */
 public class ProxyUtils {
 	private static InetAddress localAddr;
 	private static String networkInterface = "eth7";
@@ -93,6 +96,9 @@ public class ProxyUtils {
 		return isReachable;
 	}
 
+	private static Pattern IPV4_PATTERN = Pattern
+			.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
+
 	private static String getNetworkInterface() {
 
 		String networkInterfaceName = "";
@@ -108,8 +114,7 @@ public class ProxyUtils {
 			Enumeration<InetAddress> addr = networkInterface.getInetAddresses();
 			while (addr.hasMoreElements()) {
 				String s = addr.nextElement().getHostAddress();
-				Pattern IPV4_PATTERN = Pattern
-						.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
+
 				if (s != null && IPV4_PATTERN.matcher(s).matches()) {
 					networkInterfaceName += networkInterface.toString() + "IP:" + s + "\n\n";
 				}

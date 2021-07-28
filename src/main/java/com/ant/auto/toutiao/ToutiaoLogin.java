@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.S;
@@ -19,7 +19,8 @@ import com.ant.auto.util.S;
  */
 public class ToutiaoLogin {
 	private static final Logger logger = LoggerFactory.getLogger(ToutiaoLogin.class);
-	private static final String toutiaoUrl = "http://www.toutiao.com";	
+	/** 头条URL */
+	private static final String TOUTIAO_URL = "http://www.toutiao.com";
 
 	/**
 	 * 头条登录 type的作用是区分微博还是qq：1 微博，2 qq
@@ -31,7 +32,7 @@ public class ToutiaoLogin {
 	 */
 	public static WebDriver ttLogin(String username, String password, WebDriver driver, int type) {
 		// driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.navigate().to(toutiaoUrl);
+		driver.navigate().to(TOUTIAO_URL);
 		S.s1();
 		// 点击跳到登录
 		// driver.findElement(By.cssSelector("div.nav-login > a")).click();// >
@@ -40,17 +41,17 @@ public class ToutiaoLogin {
 		 * 1再点击去到具体微博/qq登录授权登录 2使用手机或者邮箱可能需要验证码
 		 */
 		S.s1();
-		if (Constants.SHARE_WEIBO == type) {
+		if (Consts.SHARE_WEIBO == type) {
 			driver.findElement(By.linkText("登录")).click();
 			// 微博
 			driver.findElement(By.cssSelector("li.sns.weibo-login")).click();
 			S.s1();
-			driver = weiboOauth(username, password, driver);
-		} else if (Constants.SHARE_QQ == type) {
+			weiboOauth(username, password, driver);
+		} else if (Consts.SHARE_QQ == type) {
 			// qq Firefox（49.0.2）下有问题，跳不转 原因是js加载错误
 			driver.findElement(By.cssSelector(".qq")).click();
 			S.s1();
-			driver = qqOauth(username, password, driver);
+			qqOauth(username, password, driver);
 		}
 
 		// 登录后 1最近授权过，无需再点击授权；2 点击授权
@@ -70,7 +71,7 @@ public class ToutiaoLogin {
 
 		// 去到 授权如果是502，可能是oauth的问题，可以直接去到主页
 		S.s1();
-		driver.navigate().to(toutiaoUrl);
+		driver.navigate().to(TOUTIAO_URL);
 		S.s1();
 
 		// 判断真实是否已经登录, 已经改变
@@ -80,8 +81,7 @@ public class ToutiaoLogin {
 		// span");
 		String userHead = WebDriverOperate
 				.getWebElement(driver, WebElementType.CssSelector.toString(), "p.name > a > span").getText();
-		if (null == userHead || "".equals(userHead)) { // "".equals(userHeadSpan)
-														// &&
+		if (null == userHead || "".equals(userHead)) {
 			logger.error("登录失败了，请检查！");
 			S.s3();
 			driver.quit();
@@ -98,9 +98,8 @@ public class ToutiaoLogin {
 	 * @param username
 	 * @param password
 	 * @param driver
-	 * @return
 	 */
-	private static WebDriver weiboOauth(String username, String password, WebDriver driver) {
+	private static void weiboOauth(String username, String password, WebDriver driver) {
 		// 首先判断是否已经登录
 		// WebElement webEle =
 		// WebDriverOperate.getWebElementByClassName(driver,"account_name");
@@ -122,7 +121,6 @@ public class ToutiaoLogin {
 			// 第一次可能有验证码
 			// 引用登录 就是去到WeiboLogin登录然后再返回这个授权页面 暂时不提供
 		}
-		return driver;
 	}
 
 	/**
@@ -131,9 +129,8 @@ public class ToutiaoLogin {
 	 * @param username
 	 * @param password
 	 * @param driver
-	 * @return
 	 */
-	private static WebDriver qqOauth(String username, String password, WebDriver driver) {
+	private static void qqOauth(String username, String password, WebDriver driver) {
 		// 首先判断是否已经登录
 		WebElement webEle = WebDriverOperate.getWebElement(driver, WebElementType.Class.toString(), "account_name");
 		if (webEle == null) {
@@ -156,6 +153,5 @@ public class ToutiaoLogin {
 			driver.findElement(By.id("login_button")).click();
 			S.s1();
 		}
-		return driver;
 	}
 }

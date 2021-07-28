@@ -16,12 +16,19 @@ import com.ant.auto.util.S;
 public class WeiboLogin {
 	private static final Logger logger = LoggerFactory
 			.getLogger(WeiboLogin.class);
-	private static final String weiboUrl = "http://weibo.com/";
-	
-	//weibo登录
-	public static WebDriver weiboLogin(String username, String password, WebDriver driver) {
+	private static final String WEIBO_URL = "http://weibo.com/";
+
+	/**
+	 * weibo登录
+	 *
+	 * @param username
+	 * @param password
+	 * @param driver
+	 * @return
+	 */
+	static void weiboLogin(String username, String password, WebDriver driver) {
 		Navigation navigation = driver.navigate();
-		navigation.to(weiboUrl);
+		navigation.to(WEIBO_URL);
 		S.s2();
 
 		driver.findElement(By.id("loginname")).clear();
@@ -33,7 +40,7 @@ public class WeiboLogin {
 		driver.findElement(
 				By.xpath("//div[@id='pl_login_form']/div/div[3]/div[6]/a/span"))
 				.click();
-		// assertEquals("我的首页 微博-随时随地发现新鲜事", driver.getTitle());
+
 		if ("微博-随时随地发现新鲜事".equals(driver.getTitle())
 				|| "我的首页 微博-随时随地发现新鲜事".equals(driver.getTitle())) {
 			logger.info("weibo登录成功，username=" + username);
@@ -45,6 +52,5 @@ public class WeiboLogin {
 			logger.info("weibo登录失败，username=" + username);
 		}
 		S.s1();
-		return driver;
 	}
 }

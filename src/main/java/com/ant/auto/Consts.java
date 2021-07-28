@@ -1,20 +1,23 @@
 package com.ant.auto;
 
-public class Constants {
-	// 驱动
+/**
+ * @author sekift
+ */
+public class Consts {
+	/** 驱动*/
 	public interface Driver {
 		// chrome驱动
-		String driverChrome = "webdriver.chrome.driver";
+		String CHROME_DRIVER= "webdriver.chrome.driver";
 		// gecko驱动
-		String gecko = "webdriver.gecko.driver";
+		String GECKO_DRIVER = "webdriver.gecko.driver";
 		//opera驱动
-		String opera = "webdriver.opera.driver";
+		String OPERA_DRIVER = "webdriver.opera.driver";
 	}
 
-	// 账号分割
+	/** 账号分割*/
 	public static final String ACCOUNT_SEPARATOR = "----";
 	
-	//配置关键字
+	/** 配置关键字*/
 	public static final String USERNAME_STR = "username"; 
 	public static final String PASSWORD_STR = "password"; 
 	
@@ -30,7 +33,7 @@ public class Constants {
 	public static final String BAIDU_FLOWER_STR = "baidu_flower"; 
 	public static final String URL_STR = "url"; 
 	
-	// 驱动地址和浏览器地址
+	/** 驱动地址和浏览器地址*/
 	public static final String CHROME = "chrome"; 
 	public static final String FIREFOX = "firefox"; 
 	public static final String OPERA = "opera"; 
@@ -47,11 +50,11 @@ public class Constants {
 	public static final String OPERA_DRIVER_DIR = "opera_driver_dir"; 
 	public static final String OPERA_BROWSER_DIR = "opera_browser_dir"; 
 	
-	// 头条分享类型
+	/** 头条分享类型*/
 	public static final int SHARE_WEIBO = 1;
 	public static final int SHARE_QQ = 2;
 	
-	// 模拟停留时间，控制速度，分3档：1-5，5-10，10-20；单位为秒s
+	/** 模拟停留时间，控制速度，分3档：1-5，5-10，10-20；单位为秒s*/
 	public static final int SPEED_ZER_MIN = 0;
 	public static final int SPEED_ZER_MAX = 1;
 	public static final int SPEED_ONE_MIN = 1;

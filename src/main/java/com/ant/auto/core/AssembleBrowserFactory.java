@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.util.StringUtil;
 
 /**
@@ -19,9 +19,9 @@ public class AssembleBrowserFactory {
 			.getLogger(AssembleBrowserFactory.class);
 
 	private static Map<String, Map<String, String>> driverMap = AssembleProperties
-			.loadProMapMap(Constants.DRIVER);
+			.loadProMapMap(Consts.DRIVER);
 	private static Map<String, String> browserDirMap = AssembleProperties
-			.loadProMap(Constants.BROWSER_DIR);
+			.loadProMap(Consts.BROWSER_DIR);
 
 	public static WebDriver getBrower() {
 		WebDriver driver = null;
@@ -29,29 +29,29 @@ public class AssembleBrowserFactory {
 		String browserDir = null;
 		for (String name : driverMap.keySet()) {
 			Map<String, String> m = driverMap.get(name);
-			if (Boolean.valueOf(m.get(Constants.USE))) {
-				if (Constants.CHROME.equals(name)) {
-					String mobile = m.get(Constants.MOBILE);
-					dir = browserDirMap.get(Constants.CHROME_DIR);
+			if (Boolean.valueOf(m.get(Consts.USE))) {
+				if (Consts.CHROME.equals(name)) {
+					String mobile = m.get(Consts.MOBILE);
+					dir = browserDirMap.get(Consts.CHROME_DIR);
 					if(StringUtil.isNullOrBlank(mobile)){
 						driver = AssembleBrowser.setChrome(dir);
 					}else{
 						driver = AssembleBrowser.setChromeAsPhone(dir, mobile);
 					}
-				} else if (Constants.FIREFOX.equals(name)) {
-					dir = browserDirMap.get(Constants.FIREFOX_GECKO_DIR);
-					String option = m.get(Constants.OPTION);
-					if (Constants.NEW.equals(option)) {
+				} else if (Consts.FIREFOX.equals(name)) {
+					dir = browserDirMap.get(Consts.FIREFOX_GECKO_DIR);
+					String option = m.get(Consts.OPTION);
+					if (Consts.NEW.equals(option)) {
 						browserDir = browserDirMap
-								.get(Constants.FIREFOX_BROWSER_DIR);
+								.get(Consts.FIREFOX_BROWSER_DIR);
 					} else {
 						browserDir = browserDirMap
-								.get(Constants.FIREFOX_OLD_BROWSER_DIR);
+								.get(Consts.FIREFOX_OLD_BROWSER_DIR);
 					}
 					driver = AssembleBrowser.setFirefox(dir, browserDir, false);
-				} else if (Constants.OPERA.equals(name)) {
-					dir = browserDirMap.get(Constants.OPERA_DRIVER_DIR);
-					browserDir = browserDirMap.get(Constants.OPERA_BROWSER_DIR);
+				} else if (Consts.OPERA.equals(name)) {
+					dir = browserDirMap.get(Consts.OPERA_DRIVER_DIR);
+					browserDir = browserDirMap.get(Consts.OPERA_BROWSER_DIR);
 					driver = AssembleBrowser.setOpera(dir, browserDir);
 				}
 				break;

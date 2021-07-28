@@ -11,7 +11,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ThreadPool Factory Class
+ *
+ * @author sekift
  */
 public class ThreadPools {
 	
@@ -20,28 +21,24 @@ public class ThreadPools {
 													 int keepAlive,
 													final String nameTemplate) {
 		
-		BlockingQueue<Runnable> queue =  new SynchronousQueue<Runnable>();
-		ThreadFactory fac = new ThreadFactory() {
-			public Thread newThread(Runnable r) { 
-				Thread t = Executors.defaultThreadFactory().newThread(r);
-				t.setName(nameTemplate + "@[" + System.identityHashCode(t) + "]");
-				t.setDaemon(true);
-				return t;
-			} 
-		}; 
+		BlockingQueue<Runnable> queue =  new SynchronousQueue<>();
+		ThreadFactory fac = r -> {
+			Thread t = Executors.defaultThreadFactory().newThread(r);
+			t.setName(nameTemplate + "@[" + System.identityHashCode(t) + "]");
+			t.setDaemon(true);
+			return t;
+		};
 		return new ThreadPoolExecutor(coreSize, maxSize, keepAlive, TimeUnit.SECONDS, queue, fac); 
 	}
 	
 	public static ScheduledExecutorService newScheduledExecutorService(int coreSize, final String nameTemplate) {
 		
-		ThreadFactory fac = new ThreadFactory() {
-			public Thread newThread(Runnable r) { 
-				Thread t = Executors.defaultThreadFactory().newThread(r);
-				t.setName(nameTemplate + "@[" + System.identityHashCode(t) + "]");
-				t.setDaemon(true);
-				return t;
-			} 
-		}; 
+		ThreadFactory fac = r -> {
+			Thread t = Executors.defaultThreadFactory().newThread(r);
+			t.setName(nameTemplate + "@[" + System.identityHashCode(t) + "]");
+			t.setDaemon(true);
+			return t;
+		};
 		return new ScheduledThreadPoolExecutor(coreSize, fac);
 	}
 }

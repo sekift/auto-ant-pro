@@ -29,7 +29,9 @@ public class KillProcess {
 		}
 	}
 
-	// 杀死启动的进程
+	/**
+	 * 杀死启动的进程
+	 */
 	public static void kill() {
 		Scanner in = null;
 		try {

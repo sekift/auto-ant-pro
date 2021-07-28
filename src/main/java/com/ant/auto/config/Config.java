@@ -2,14 +2,29 @@ package com.ant.auto.config;
 
 /**
  * properties object
- * 
+ *
  * @author
  * @date
  */
 public interface Config {
 
-	<T> T getItem(String name);
+    /**
+     * 获取项
+     *
+     * @param name
+     * @param <T>
+     * @return
+     */
+    <T> T getItem(String name);
 
-	<T> T getItem(String name, T defaultValue);
+    /**
+     * 获取项
+     *
+     * @param name
+     * @param defaultValue
+     * @param <T>
+     * @return
+     */
+    <T> T getItem(String name, T defaultValue);
 
 }

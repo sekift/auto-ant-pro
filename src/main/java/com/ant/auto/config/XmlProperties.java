@@ -30,17 +30,18 @@ public class XmlProperties extends ReloadableProperties implements Config {
 	protected Map reload(InputStream in, Map tarStorage) {
 
 		try {
-			Map rtv = XmlUtil.toMap(in);
-			return rtv;
+			return XmlUtil.toMap(in);
 		} catch (Exception ex) {
 			return tarStorage;
 		}
 	}
 
+	@Override
 	public <T> T getItem(String name) {
 		return (T) props.get(name);
 	}
 
+	@Override
 	public <T> T getItem(String name, T defaultValue) {
 
 		T rtv = (T) props.get(name);

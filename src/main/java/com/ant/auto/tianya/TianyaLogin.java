@@ -13,20 +13,21 @@ import com.ant.auto.util.S;
 */
 public class TianyaLogin {
 	
-	private static final String baseUrl = "https://passport.tianya.cn/";
+	private static final String BASE_URL = "https://passport.tianya.cn/";
 	
 	public static WebDriver login(String username, String password,
 			WebDriver driver) {
-	    driver.get(baseUrl + "/register/default.jsp?fowardURL=" + TianyaZan.hotUrl);
+	    driver.get(BASE_URL + "/register/default.jsp?fowardURL=" + TianyaZan.HOT_URL);
 	    
 	    Actions actions = new Actions(driver);
-		actions.moveByOffset(154, 20).click().build().perform();// 点击
+		// 随机点击
+		actions.moveByOffset(154, 20).click().build().perform();
 		S.s1();
-		actions.moveByOffset(322, 115).click().build().perform();// 点击
+		actions.moveByOffset(322, 115).click().build().perform();
 		S.s1();
-		actions.moveByOffset(123, 82).click().build().perform();// 点击
+		actions.moveByOffset(123, 82).click().build().perform();
 		S.s1();
-		actions.moveByOffset(21, 220).click().build().perform();// 点击
+		actions.moveByOffset(21, 220).click().build().perform();
 		S.s1();
 	    
 	    driver.findElement(By.id("sign")).click();

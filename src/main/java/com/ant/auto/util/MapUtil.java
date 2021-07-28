@@ -28,7 +28,7 @@ public class MapUtil {
 		double num = defaultNum;
 		try {
 			Object temp = params.get(name);
-			if (temp != null && !temp.equals("")) {
+			if (temp != null && !"".equals(temp)) {
 				num = Double.parseDouble(temp.toString());
 			}
 		} catch (Exception e) {

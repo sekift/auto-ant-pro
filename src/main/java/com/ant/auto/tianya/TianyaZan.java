@@ -26,27 +26,33 @@ import com.ant.auto.util.S;
 public class TianyaZan {
 	private static final Logger logger = LoggerFactory.getLogger(TianyaZan.class);
 
-	// 热贴版
-	private static final String bbsUrl = "http://bbs.tianya.cn";
-	// 自行修改页数
-	public static final String hotUrl = "http://bbs.tianya.cn/hotArticle.jsp?pn=" + 1;
-	// 钱包页面
-	private static final String walletUrl = "http://bei.tianya.cn/wallet/index.do";
+	/** 热贴版URL*/
+	private static final String BBS_URL = "http://bbs.tianya.cn";
+	/**  自行修改页数URL*/
+	public static final String HOT_URL = "http://bbs.tianya.cn/hotArticle.jsp?pn=" + 1;
+	/**  钱包页面URL*/
+	private static final String WALLET_URL = "http://bei.tianya.cn/wallet/index.do";
 
+	/**
+	 * 点赞
+	 *
+	 * @param username
+	 * @param password
+	 * @param driverPre
+	 */
 	public static void dianZan(String username, String password, WebDriver driverPre) {
 		WebDriver driver = TianyaLogin.login(username, password, driverPre);
 
-		// 转到热贴版 前面已经跳到了
-		//driver.navigate().to(hotUrl);
 		S.s1();
 		Actions actions = new Actions(driver);
-		actions.moveByOffset(1, 3).click().build().perform();// 点击
+		actions.moveByOffset(1, 3).click().build().perform();
 
 		String wd = driver.getPageSource();
 		Document doc = Jsoup.parse(wd);
 		Elements eles = doc.getElementsByClass("td-title").select("a");
-		for (int i = 0; i < 33; i++) {// 100%的能量最多只能点29次赞
-			String url = bbsUrl + eles.get(i).attr("href");
+		// 100%的能量最多只能点29次赞
+		for (int i = 0; i < 33; i++) {
+			String url = BBS_URL + eles.get(i).attr("href");
 			// 设置为15秒
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			// 跳转到具体帖子
@@ -77,7 +83,7 @@ public class TianyaZan {
 		}
 
 		// 之后跳去钱包核查
-		driver.navigate().to(walletUrl);
+		driver.navigate().to(WALLET_URL);
 		S.s1();
 
 		// 点击天涯分

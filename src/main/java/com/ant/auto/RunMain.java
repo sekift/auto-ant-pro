@@ -5,8 +5,11 @@ import java.util.Map;
 
 import com.ant.auto.core.AssembleProperties;
 
+/**
+ * @author sekift
+ */
 public class RunMain {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Map<String, Map<String, String>> map = AssembleProperties.loadProMapMap("driver");
 		for (String name : map.keySet()) {
 			Map<String, String> m = map.get(name);
@@ -16,8 +19,8 @@ public class RunMain {
 			}
 		}
 
-		List<Map<String, String>> targetList = AssembleProperties.loadProString(Constants.WEIBO_TARGET_STR,
-				Constants.ACCOUNT_STR);
+		List<Map<String, String>> targetList = AssembleProperties.loadProString(Consts.WEIBO_TARGET_STR,
+				Consts.ACCOUNT_STR);
 		for (Map<String, String> targetMap : targetList) {
 			System.out.println(targetMap);
 		}

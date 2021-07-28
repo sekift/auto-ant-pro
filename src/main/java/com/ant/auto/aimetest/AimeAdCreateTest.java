@@ -5,6 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+/**
+ *
+ * @author sekift
+ */
 public class AimeAdCreateTest {
     private static final String TEST_URL = AimeMain.BASE_URL+"/create/advertising-creativity";
 
@@ -32,8 +36,6 @@ public class AimeAdCreateTest {
         driver.findElement(By.id("resCntnValue")).sendKeys("测试广告创意的具体内容Selenium");
         S.s1();
         ((JavascriptExecutor) driver).executeScript("scrollTo(400, 800)");
-        S.s1();
-        //driver.findElement(By.xpath("//button[@type=\'submit\']")).click();
         S.s2();
         return driver;
     }

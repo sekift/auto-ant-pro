@@ -25,7 +25,7 @@ public class SendMessageTool {
 	public static String sendMessageByRemoteSMS(String numbers,String text){
 		// 接口地址
 		String url = "http://localhost:8080/";
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>(4);
 		params.put("numbers", numbers);
 		try {
 			params.put("text", URLEncoder.encode(text, "utf-8"));
@@ -46,8 +46,7 @@ public class SendMessageTool {
 	 * 2.获取信息：http://localhost:8080/?showConversation=308&_=1480572297973 ；返回的最后一条就是新信息。
 	 * 以上方法仅是当没有获取过的可用，即需要定时器轮询接口。
 	 * 还可以获取全部，然后取第一条数据。
-	 * @param numbers
-	 * @param text
+	 *
 	 * @return
 	 */
 	public static String getMessageByRemoteSMS() {
@@ -69,7 +68,7 @@ public class SendMessageTool {
 		return result;
 	}
 	
-	public static void main(String args[]){
+	public static void main(String[] args){
 		System.out.println(getMessageByRemoteSMS());
 	}
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ant.auto.Constants;
+import com.ant.auto.Consts;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.S;
@@ -21,7 +21,7 @@ public class ToutiaoOperate {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ToutiaoOperate.class);
 
-	public static WebDriver operateTarget(WebDriver driver, int type) {
+	public static void operateTarget(WebDriver driver, int type) {
 		/**
 		 * 打开第一篇文章li[1] //div/ul/li[1]/div/div/div/div/a
 		 */
@@ -54,13 +54,14 @@ public class ToutiaoOperate {
 		S.s1();
 		
 		Actions actions = new Actions(driver);
-		actions.moveByOffset(154, 223).click().build().perform();// 点击
+		// 点击
+		actions.moveByOffset(154, 223).click().build().perform();
 		S.s1();
-		actions.moveByOffset(322, 445).click().build().perform();// 点击
+		actions.moveByOffset(322, 445).click().build().perform();
 		S.s1();
-		actions.moveByOffset(523, 660).click().build().perform();// 点击
+		actions.moveByOffset(523, 660).click().build().perform();
 		S.s1();
-		actions.moveByOffset(714, 620).click().build().perform();// 点击
+		actions.moveByOffset(714, 620).click().build().perform();
 		S.s1();
 		// 收藏 有bug 重复点击会去掉收藏
 		/**
@@ -77,19 +78,18 @@ public class ToutiaoOperate {
 		// 评论 评论不打算开发
 
 		// 分享
-		if (Constants.SHARE_WEIBO == type) {
+		if (Consts.SHARE_WEIBO == type) {
 			// 转发到微博
-			driver = shareWeibo(driver, titleStr);
-		} else if (Constants.SHARE_QQ == type) {
+			shareWeibo(driver, titleStr);
+		} else if (Consts.SHARE_QQ == type) {
 			// 转发到朋友圈
-			driver = shareQQ(driver, titleStr);
+			shareQQ(driver, titleStr);
 		}
 
-		return driver;
 	}
 
 	// 转发到微博
-	public static WebDriver shareWeibo(WebDriver driver, String titleStr) {
+	public static void shareWeibo(WebDriver driver, String titleStr) {
 		/**
 		 * assertEquals("分享到微博-微博-随时随地分享身边的新鲜事儿", driver.getTitle());
 		 * driver.findElement(By.id("shareIt")).click();
@@ -110,22 +110,20 @@ public class ToutiaoOperate {
 		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
 		S.s2();
-		
+
 		//TODO 转发完应该关闭小窗口，并回到原窗口
-		
-		return driver;
+
 	}
 
 	// 转发到QQ空间
-	public static WebDriver shareQQ(WebDriver driver, String titleStr) {
+	public static void shareQQ(WebDriver driver, String titleStr) {
 		/**
 		 * assertEquals("分享到微博-微博-随时随地分享身边的新鲜事儿", driver.getTitle());
 		 * driver.findElement(By.id("shareIt")).click();
 		 */
 		String shareQQ = "i.y-icon.icon-qzone";
 		driver.findElement(By.cssSelector(shareQQ)).click();
-		// 打开了新的窗口
-		// 跳转到
+		// 打开了新的窗口-》跳转到
 		String shareQQTile = "分享到QQ空间和朋友网";
 		WebDriverOperate.switchToWindow(driver, shareQQTile, false);
 		S.s1();
@@ -135,8 +133,7 @@ public class ToutiaoOperate {
 		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
 		S.s2();
-		
+
 		//TODO 转发完应该关闭小窗口，并回到原窗口
-		return driver;
 	}
 }
