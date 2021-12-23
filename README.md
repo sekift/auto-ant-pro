@@ -150,3 +150,7 @@ config/client.xml的driver是选择启动哪一个浏览器的配置，use为tru
  4. IDEA: 2019.1.1 <br />
 # 展望
  1. 可以使用cucumber-jvm进行驱动开发<br />
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/sekift/auto-ant-pro.svg)](https://starchart.cc/sekift/auto-ant-pro)
